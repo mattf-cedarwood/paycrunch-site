@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Compound Interest Calculator — Free Online Calculator | paycrunch.co</title>
+<meta name="description" content="Free compound interest calculator. Calculate investment growth with monthly contributions. See the power of compounding over 5, 10, 20, 30 years.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://paycrunch.co/compound-interest-calculator.html">
+<meta property="og:title" content="Compound Interest Calculator">
+<meta property="og:description" content="Free compound interest calculator. Calculate investment growth with monthly contributions. See the power of compounding over 5, 10, 20, 30 years.">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Compound Interest Calculator","description":"Calculate compound interest with monthly contributions","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#f8f9fa;color:#1a1a2e;line-height:1.7}
+.container{max-width:800px;margin:0 auto;padding:0 20px}
+header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:40px 0 30px;text-align:center}
+header h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+header p{font-size:1.05rem;opacity:.85;max-width:600px;margin:0 auto}
+nav{background:#16213e;padding:10px 0;text-align:center;overflow-x:auto;white-space:nowrap}
+nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.82rem;padding:6px 12px;display:inline-block;border-radius:6px;transition:all .2s}
+nav a:hover,nav a.active{color:#fff;background:rgba(255,255,255,.1)}
+.ad-slot{background:#e9ecef;border:2px dashed #ced4da;padding:15px;text-align:center;margin:20px 0;border-radius:8px;color:#868e96;font-size:.8rem;min-height:90px;display:flex;align-items:center;justify-content:center}
+.card{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:32px;margin:20px 0}
+.card.hero{margin-top:-20px;position:relative;z-index:2}
+label{display:block;font-weight:600;margin-bottom:6px;font-size:.92rem;color:#495057}
+input[type="number"],select{width:100%;padding:12px 14px;border:2px solid #dee2e6;border-radius:10px;font-size:1.05rem;transition:border-color .2s,box-shadow .2s;background:#f8f9fa}
+input:focus,select:focus{outline:none;border-color:#0f3460;box-shadow:0 0 0 3px rgba(15,52,96,.1);background:#fff}
+.input-row{display:flex;gap:14px;flex-wrap:wrap}
+.input-row .input-group{flex:1;min-width:180px;margin-bottom:16px}
+.dollar-wrap{position:relative}
+.dollar-wrap::before{content:'$';position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.05rem;color:#868e96;font-weight:600}
+.dollar-wrap input{padding-left:28px}
+.pct-wrap{position:relative}
+.pct-wrap::after{content:'%';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.05rem;color:#868e96;font-weight:600}
+.pct-wrap input{padding-right:28px}
+.results{margin-top:20px;display:none}
+.results.visible{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.results-header{font-size:.9rem;font-weight:600;color:#868e96;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #f1f3f5}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result-item{background:#f8f9fa;border-radius:12px;padding:14px 18px;transition:background .2s}
+.result-item:hover{background:#e9ecef}
+.result-item.highlight{background:linear-gradient(135deg,#0f3460,#1a1a2e);color:#fff;grid-column:1/-1}
+.result-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;opacity:.7;margin-bottom:3px}
+.result-value{font-size:1.4rem;font-weight:700}
+.result-item.highlight .result-value{font-size:1.9rem}
+.result-note{font-size:.78rem;opacity:.6;margin-top:3px}
+.content-section{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:32px;margin:24px 0}
+.content-section h2{font-size:1.35rem;margin-bottom:14px;color:#1a1a2e}
+.content-section h3{font-size:1.1rem;margin:18px 0 8px;color:#16213e}
+.content-section p{color:#495057;margin-bottom:12px}
+.faq-item{border-bottom:1px solid #f1f3f5;padding:14px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:1rem;margin-bottom:6px;color:#1a1a2e;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:1.3rem;color:#0f3460;transition:transform .2s}
+.faq-q.open::after{content:'\2212'}
+.faq-a{color:#495057;display:none;padding-top:4px}
+.faq-a.visible{display:block}
+.ref-table{width:100%;border-collapse:collapse}
+.ref-table th{background:#1a1a2e;color:#fff;padding:10px 14px;text-align:left;font-size:.82rem;text-transform:uppercase;letter-spacing:.5px}
+.ref-table th:first-child{border-radius:8px 0 0 0}
+.ref-table th:last-child{border-radius:0 8px 0 0}
+.ref-table td{padding:10px 14px;border-bottom:1px solid #f1f3f5;font-size:.92rem}
+.ref-table tr:hover td{background:#f8f9fa}
+footer{text-align:center;padding:28px 20px;color:#868e96;font-size:.82rem}
+footer a{color:#0f3460;text-decoration:none}
+@media(max-width:600px){header h1{font-size:1.4rem}.card{padding:18px}.result-grid{grid-template-columns:1fr}.result-item.highlight .result-value{font-size:1.5rem}.input-row{flex-direction:column;gap:0}.ref-table td,.ref-table th{padding:7px 8px;font-size:.82rem}}
+</style>
+</head>
+<body>
+<header><div class="container"><h1>Compound Interest Calculator</h1><p>See how your money grows over time with compound interest and monthly contributions.</p></div></header>
+<nav><div class="container"><a href="index.html">Home</a><a href="hourly-to-salary-calculator.html">Hourly to Salary</a><a href="salary-to-hourly-calculator.html">Salary to Hourly</a><a href="tip-calculator.html">Tip Calculator</a><a href="percentage-calculator.html">Percentage Calc</a><a href="overtime-calculator.html">Overtime Pay</a><a href="compound-interest-calculator.html" class="active">Compound Interest</a><a href="take-home-pay-calculator.html">Take-Home Pay</a><a href="loan-payment-calculator.html">Loan Payment</a><a href="roi-calculator.html">ROI Calculator</a><a href="discount-calculator.html">Discount/Sale</a></div></nav>
+<div class="container">
+<div class="card hero">
+<div class="input-row">
+<div class="input-group"><label for="principal">Initial Investment</label><div class="dollar-wrap"><input type="number" id="principal" placeholder="10000" min="0" step="100" inputmode="decimal"></div></div>
+<div class="input-group"><label for="contrib">Monthly Contribution</label><div class="dollar-wrap"><input type="number" id="contrib" value="200" min="0" step="50" inputmode="decimal"></div></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label for="rate">Annual Interest Rate</label><div class="pct-wrap"><input type="number" id="rate" value="7" min="0" max="100" step="0.1" inputmode="decimal"></div></div>
+<div class="input-group"><label for="years">Years</label><input type="number" id="years" value="20" min="1" max="100"></div>
+<div class="input-group"><label for="compound">Compound Frequency</label><select id="compound"><option value="12" selected>Monthly</option><option value="4">Quarterly</option><option value="1">Annually</option></select></div>
+</div>
+<div class="results" id="res">
+<div class="results-header">Investment Growth</div>
+<div class="result-grid">
+<div class="result-item highlight"><div class="result-label">Future Value</div><div class="result-value" id="rFuture">$0</div></div>
+<div class="result-item"><div class="result-label">Total Invested</div><div class="result-value" id="rInvested">$0</div></div>
+<div class="result-item"><div class="result-label">Interest Earned</div><div class="result-value" id="rInterest">$0</div></div>
+<div class="result-item"><div class="result-label">Growth Multiple</div><div class="result-value" id="rMultiple">0x</div></div>
+<div class="result-item"><div class="result-label">Effective Annual Rate</div><div class="result-value" id="rEffective">0%</div></div>
+</div></div></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+<div class="content-section"><h2>Understanding Compound Interest</h2>
+<p>Compound interest is interest earned on both your original investment AND the interest that has already accumulated. Einstein reportedly called it the "eighth wonder of the world." The formula is: <strong>A = P(1 + r/n)^(nt)</strong> where P is principal, r is annual rate, n is compounds per year, and t is years.</p>
+<h3>The Power of Time</h3>
+<p>Starting early matters more than investing more. $200/month invested at 7% from age 25 grows to $528,000 by 65. Starting at 35 (same contributions) yields only $244,000 — less than half. Those first 10 years of compound growth account for $284,000 in difference.</p>
+<h3>The Rule of 72</h3>
+<p>A quick mental math trick: divide 72 by your interest rate to estimate how many years it takes to double your money. At 7% return: 72/7 = roughly 10.3 years to double. At 10%: about 7.2 years.</p></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+<div class="content-section"><h2>Frequently Asked Questions</h2>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is a good rate of return?</div><div class="faq-a">The S&P 500 has averaged about 10% annually (7% after inflation) historically. A balanced portfolio typically targets 6-8% real returns long-term.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Monthly vs. annual compounding — does it matter?</div><div class="faq-a">Monthly compounding earns slightly more. At 7% on $10,000 over 20 years: annual compounding = $38,697, monthly = $40,387. The difference grows with higher rates and longer periods.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How much should I invest monthly?</div><div class="faq-a">A common guideline is 15-20% of gross income for retirement. Start with whatever you can — even $50/month benefits from compounding. Increase contributions as your income grows.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Does this account for inflation?</div><div class="faq-a">No. For inflation-adjusted estimates, subtract 2-3% from your expected return rate. If you expect 7% returns, use 4-5% to see real purchasing power.</div></div></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+</div>
+<footer><div class="container">
+<p>&copy; 2026 paycrunch.co. All calculations are estimates. Consult a financial professional for personalized advice.</p>
+<p style="margin-top:6px"><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Use</a></p>
+</div></footer>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString()}
+function fmtDec(n,d){return '$'+n.toFixed(d).replace(/\B(?=(\d{3})+(?!\d))/g,',')}
+function fmtPct(n){return n.toFixed(2)+'%'}
+function fmtNum(n){return Math.round(n).toLocaleString()}
+
+function toggleFaq(el){var a=el.nextElementSibling,o=el.classList.contains('open');
+document.querySelectorAll('.faq-q').forEach(function(q){q.classList.remove('open')});
+document.querySelectorAll('.faq-a').forEach(function(a){a.classList.remove('visible')});
+if(!o){el.classList.add('open');a.classList.add('visible')}}
+
+
+function calc(){var p=parseFloat(document.getElementById('principal').value)||0,c=parseFloat(document.getElementById('contrib').value)||0,
+r=parseFloat(document.getElementById('rate').value)/100,y=parseInt(document.getElementById('years').value),n=parseInt(document.getElementById('compound').value);
+if(p<=0&&c<=0){document.getElementById('res').classList.remove('visible');return}
+var rn=r/n,nt=n*y,fvP=p*Math.pow(1+rn,nt),fvC=c*(12/n)*((Math.pow(1+rn,nt)-1)/rn),fv=fvP+fvC,totalInv=p+(c*12*y),interest=fv-totalInv;
+document.getElementById('rFuture').textContent=fmt(fv);document.getElementById('rInvested').textContent=fmt(totalInv);
+document.getElementById('rInterest').textContent=fmt(interest);document.getElementById('rMultiple').textContent=(totalInv>0?(fv/totalInv).toFixed(1)+'x':'—');
+var ear=(Math.pow(1+rn,n)-1)*100;document.getElementById('rEffective').textContent=ear.toFixed(2)+'%';document.getElementById('res').classList.add('visible')}
+['principal','contrib','rate','years'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
+document.getElementById('compound').addEventListener('change',calc);document.getElementById('principal').focus();
+</script>
+</body>
+</html>

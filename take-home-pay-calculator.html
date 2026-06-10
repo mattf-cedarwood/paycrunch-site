@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Take-Home Pay Calculator — Free Online Calculator | paycrunch.co</title>
+<meta name="description" content="Free take-home pay calculator. Estimate net pay after federal tax, state tax, Social Security, Medicare, and 401(k) deductions.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://paycrunch.co/take-home-pay-calculator.html">
+<meta property="og:title" content="Take-Home Pay Calculator">
+<meta property="og:description" content="Free take-home pay calculator. Estimate net pay after federal tax, state tax, Social Security, Medicare, and 401(k) deductions.">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Take-Home Pay Calculator","description":"Estimate net pay after federal tax, state tax, FICA, and 401k deductions","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#f8f9fa;color:#1a1a2e;line-height:1.7}
+.container{max-width:800px;margin:0 auto;padding:0 20px}
+header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:40px 0 30px;text-align:center}
+header h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+header p{font-size:1.05rem;opacity:.85;max-width:600px;margin:0 auto}
+nav{background:#16213e;padding:10px 0;text-align:center;overflow-x:auto;white-space:nowrap}
+nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.82rem;padding:6px 12px;display:inline-block;border-radius:6px;transition:all .2s}
+nav a:hover,nav a.active{color:#fff;background:rgba(255,255,255,.1)}
+.ad-slot{background:#e9ecef;border:2px dashed #ced4da;padding:15px;text-align:center;margin:20px 0;border-radius:8px;color:#868e96;font-size:.8rem;min-height:90px;display:flex;align-items:center;justify-content:center}
+.card{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:32px;margin:20px 0}
+.card.hero{margin-top:-20px;position:relative;z-index:2}
+label{display:block;font-weight:600;margin-bottom:6px;font-size:.92rem;color:#495057}
+input[type="number"],select{width:100%;padding:12px 14px;border:2px solid #dee2e6;border-radius:10px;font-size:1.05rem;transition:border-color .2s,box-shadow .2s;background:#f8f9fa}
+input:focus,select:focus{outline:none;border-color:#0f3460;box-shadow:0 0 0 3px rgba(15,52,96,.1);background:#fff}
+.input-row{display:flex;gap:14px;flex-wrap:wrap}
+.input-row .input-group{flex:1;min-width:180px;margin-bottom:16px}
+.dollar-wrap{position:relative}
+.dollar-wrap::before{content:'$';position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.05rem;color:#868e96;font-weight:600}
+.dollar-wrap input{padding-left:28px}
+.pct-wrap{position:relative}
+.pct-wrap::after{content:'%';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.05rem;color:#868e96;font-weight:600}
+.pct-wrap input{padding-right:28px}
+.results{margin-top:20px;display:none}
+.results.visible{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.results-header{font-size:.9rem;font-weight:600;color:#868e96;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #f1f3f5}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result-item{background:#f8f9fa;border-radius:12px;padding:14px 18px;transition:background .2s}
+.result-item:hover{background:#e9ecef}
+.result-item.highlight{background:linear-gradient(135deg,#0f3460,#1a1a2e);color:#fff;grid-column:1/-1}
+.result-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;opacity:.7;margin-bottom:3px}
+.result-value{font-size:1.4rem;font-weight:700}
+.result-item.highlight .result-value{font-size:1.9rem}
+.result-note{font-size:.78rem;opacity:.6;margin-top:3px}
+.content-section{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:32px;margin:24px 0}
+.content-section h2{font-size:1.35rem;margin-bottom:14px;color:#1a1a2e}
+.content-section h3{font-size:1.1rem;margin:18px 0 8px;color:#16213e}
+.content-section p{color:#495057;margin-bottom:12px}
+.faq-item{border-bottom:1px solid #f1f3f5;padding:14px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:1rem;margin-bottom:6px;color:#1a1a2e;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:1.3rem;color:#0f3460;transition:transform .2s}
+.faq-q.open::after{content:'\2212'}
+.faq-a{color:#495057;display:none;padding-top:4px}
+.faq-a.visible{display:block}
+.ref-table{width:100%;border-collapse:collapse}
+.ref-table th{background:#1a1a2e;color:#fff;padding:10px 14px;text-align:left;font-size:.82rem;text-transform:uppercase;letter-spacing:.5px}
+.ref-table th:first-child{border-radius:8px 0 0 0}
+.ref-table th:last-child{border-radius:0 8px 0 0}
+.ref-table td{padding:10px 14px;border-bottom:1px solid #f1f3f5;font-size:.92rem}
+.ref-table tr:hover td{background:#f8f9fa}
+footer{text-align:center;padding:28px 20px;color:#868e96;font-size:.82rem}
+footer a{color:#0f3460;text-decoration:none}
+@media(max-width:600px){header h1{font-size:1.4rem}.card{padding:18px}.result-grid{grid-template-columns:1fr}.result-item.highlight .result-value{font-size:1.5rem}.input-row{flex-direction:column;gap:0}.ref-table td,.ref-table th{padding:7px 8px;font-size:.82rem}}
+</style>
+</head>
+<body>
+<header><div class="container"><h1>Take-Home Pay Calculator</h1><p>Estimate your actual paycheck after taxes, FICA, and 401(k) deductions.</p></div></header>
+<nav><div class="container"><a href="index.html">Home</a><a href="hourly-to-salary-calculator.html">Hourly to Salary</a><a href="salary-to-hourly-calculator.html">Salary to Hourly</a><a href="tip-calculator.html">Tip Calculator</a><a href="percentage-calculator.html">Percentage Calc</a><a href="overtime-calculator.html">Overtime Pay</a><a href="compound-interest-calculator.html">Compound Interest</a><a href="take-home-pay-calculator.html" class="active">Take-Home Pay</a><a href="loan-payment-calculator.html">Loan Payment</a><a href="roi-calculator.html">ROI Calculator</a><a href="discount-calculator.html">Discount/Sale</a></div></nav>
+<div class="container">
+<div class="card hero">
+<div class="input-row">
+<div class="input-group"><label for="gross">Annual Gross Salary</label><div class="dollar-wrap"><input type="number" id="gross" placeholder="60000" min="0" step="1000" inputmode="decimal"></div></div>
+<div class="input-group"><label for="filing">Filing Status</label><select id="filing"><option value="single" selected>Single</option><option value="married">Married Filing Jointly</option><option value="head">Head of Household</option></select></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label for="state">State Tax Rate (approx.)</label><div class="pct-wrap"><input type="number" id="state" value="5" min="0" max="15" step="0.1" inputmode="decimal"></div></div>
+<div class="input-group"><label for="contrib401">401(k) Contribution</label><div class="pct-wrap"><input type="number" id="contrib401" value="6" min="0" max="100" step="1" inputmode="decimal"></div></div>
+</div>
+<div class="results" id="res">
+<div class="results-header">Estimated Take-Home Pay</div>
+<div class="result-grid">
+<div class="result-item highlight"><div class="result-label">Annual Take-Home</div><div class="result-value" id="rNet">$0</div><div class="result-note">Estimate — consult a tax professional</div></div>
+<div class="result-item"><div class="result-label">Monthly Take-Home</div><div class="result-value" id="rMon">$0</div></div>
+<div class="result-item"><div class="result-label">Bi-Weekly Paycheck</div><div class="result-value" id="rBi">$0</div></div>
+<div class="result-item"><div class="result-label">Federal Tax</div><div class="result-value" id="rFed">$0</div></div>
+<div class="result-item"><div class="result-label">State Tax</div><div class="result-value" id="rState">$0</div></div>
+<div class="result-item"><div class="result-label">FICA (SS + Medicare)</div><div class="result-value" id="rFica">$0</div></div>
+<div class="result-item"><div class="result-label">401(k) Contribution</div><div class="result-value" id="r401">$0</div></div>
+<div class="result-item"><div class="result-label">Effective Tax Rate</div><div class="result-value" id="rEff">0%</div></div>
+</div></div></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+<div class="content-section"><h2>Understanding Your Take-Home Pay</h2>
+<p>Your take-home pay (net pay) is what you actually receive after all deductions. The main deductions are federal income tax, state income tax, Social Security (6.2%), Medicare (1.45%), and any pre-tax contributions like 401(k).</p>
+<h3>Federal Tax Brackets (2024)</h3>
+<p>The US uses a progressive tax system, meaning different portions of your income are taxed at different rates. For a single filer: the first $11,600 is taxed at 10%, $11,601-$47,150 at 12%, $47,151-$100,525 at 22%, and so on up to 37% for income above $609,350.</p>
+<h3>No-Income-Tax States</h3>
+<p>Nine states have no state income tax: Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, and Wyoming. Set the state tax rate to 0% if you live in one of these states.</p></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+<div class="content-section"><h2>Frequently Asked Questions</h2>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How accurate is this calculator?</div><div class="faq-a">This provides a reasonable estimate using 2024 federal tax brackets and standard deductions. Your actual pay depends on specific deductions, credits, W-4 settings, and local taxes. Consult a tax professional for precise numbers.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is FICA tax?</div><div class="faq-a">FICA = Social Security (6.2% up to $168,600) + Medicare (1.45% on all earnings). Total: 7.65% for most workers. Your employer pays a matching 7.65%.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Should I contribute to a 401(k)?</div><div class="faq-a">Generally yes, especially if your employer matches. The match is free money. Even without a match, 401(k) contributions reduce your taxable income now and grow tax-deferred.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What take-home pay can I expect on $60K?</div><div class="faq-a">Roughly $45,000-$48,000/year take-home on a $60K salary (single, no 401k, average state tax). That's about $3,500-$3,700/month after all deductions.</div></div></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+</div>
+<footer><div class="container">
+<p>&copy; 2026 paycrunch.co. All calculations are estimates. Consult a financial professional for personalized advice.</p>
+<p style="margin-top:6px"><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Use</a></p>
+</div></footer>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString()}
+function fmtDec(n,d){return '$'+n.toFixed(d).replace(/\B(?=(\d{3})+(?!\d))/g,',')}
+function fmtPct(n){return n.toFixed(2)+'%'}
+function fmtNum(n){return Math.round(n).toLocaleString()}
+
+function toggleFaq(el){var a=el.nextElementSibling,o=el.classList.contains('open');
+document.querySelectorAll('.faq-q').forEach(function(q){q.classList.remove('open')});
+document.querySelectorAll('.faq-a').forEach(function(a){a.classList.remove('visible')});
+if(!o){el.classList.add('open');a.classList.add('visible')}}
+
+
+function fedTax(income,filing){
+var brackets={single:[[11600,.10],[47150,.12],[100525,.22],[191950,.24],[243725,.32],[609350,.35],[Infinity,.37]],
+married:[[23200,.10],[94300,.12],[201050,.22],[383900,.24],[487450,.32],[731200,.35],[Infinity,.37]],
+head:[[16550,.10],[63100,.12],[100500,.22],[191950,.24],[243700,.32],[609350,.35],[Infinity,.37]]};
+var b=brackets[filing]||brackets.single,tax=0,prev=0;
+for(var i=0;i<b.length;i++){var limit=b[i][0],rate=b[i][1];if(income<=limit){tax+=(income-prev)*rate;break}else{tax+=(limit-prev)*rate;prev=limit}}return tax}
+function calc(){var g=parseFloat(document.getElementById('gross').value),f=document.getElementById('filing').value,
+st=parseFloat(document.getElementById('state').value)/100,c4=parseFloat(document.getElementById('contrib401').value)/100;
+if(isNaN(g)||g<=0){document.getElementById('res').classList.remove('visible');return}
+var contrib=g*c4,taxable=g-contrib,fed=fedTax(taxable,f),state=taxable*st,ss=Math.min(g,168600)*.062,med=g*.0145,fica=ss+med;
+var net=g-fed-state-fica-contrib;
+document.getElementById('rNet').textContent=fmt(net);document.getElementById('rMon').textContent=fmt(net/12);
+document.getElementById('rBi').textContent=fmt(net/26);document.getElementById('rFed').textContent=fmt(fed);
+document.getElementById('rState').textContent=fmt(state);document.getElementById('rFica').textContent=fmt(fica);
+document.getElementById('r401').textContent=fmt(contrib);document.getElementById('rEff').textContent=((fed+state+fica)/g*100).toFixed(1)+'%';
+document.getElementById('res').classList.add('visible')}
+['gross','state','contrib401'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
+document.getElementById('filing').addEventListener('change',calc);document.getElementById('gross').focus();
+</script>
+</body>
+</html>

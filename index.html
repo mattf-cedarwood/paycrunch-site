@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Free Online Calculators — Salary, Loans, Investing & More | paycrunch.co</title>
+<meta name="description" content="Free online financial calculators. Salary, tips, loans, compound interest, take-home pay, ROI and more. Instant results, no signup, 100% private.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://paycrunch.co/">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#fff;color:#1a1a2e;line-height:1.7}
+
+/* Hero */
+.hero{background:linear-gradient(145deg,#0f172a 0%,#1e293b 100%);color:#fff;padding:70px 20px 50px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 40%,rgba(59,130,246,.08) 0%,transparent 60%),radial-gradient(circle at 70% 60%,rgba(16,185,129,.06) 0%,transparent 50%);pointer-events:none}
+.hero-inner{max-width:700px;margin:0 auto;position:relative;z-index:1}
+.hero-badge{display:inline-block;background:rgba(59,130,246,.15);color:#60a5fa;font-size:.75rem;font-weight:600;padding:6px 16px;border-radius:20px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:20px;border:1px solid rgba(59,130,246,.2)}
+.hero h1{font-size:2.6rem;font-weight:800;line-height:1.2;margin-bottom:16px;letter-spacing:-.02em}
+.hero h1 span{background:linear-gradient(135deg,#60a5fa,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1.15rem;color:rgba(255,255,255,.7);max-width:520px;margin:0 auto 30px;line-height:1.6}
+.hero-stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat-val{font-size:1.6rem;font-weight:700;color:#fff}
+.hero-stat-label{font-size:.78rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px}
+
+/* Container */
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* Category Sections */
+.section{padding:50px 0 30px}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.section-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.section-icon.salary{background:linear-gradient(135deg,#dbeafe,#bfdbfe);color:#1d4ed8}
+.section-icon.money{background:linear-gradient(135deg,#d1fae5,#a7f3d0);color:#059669}
+.section-icon.invest{background:linear-gradient(135deg,#fef3c7,#fde68a);color:#d97706}
+.section-label{font-size:1.3rem;font-weight:700;color:#0f172a}
+.section-sub{font-size:.88rem;color:#64748b;margin-top:2px}
+
+/* Tool Cards */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.tool-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:24px;text-decoration:none;color:inherit;transition:all .25s ease;display:flex;gap:16px;align-items:flex-start}
+.tool-card:hover{border-color:#3b82f6;box-shadow:0 8px 30px rgba(59,130,246,.12);transform:translateY(-2px)}
+.tool-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.tool-icon.blue{background:#eff6ff;color:#2563eb}
+.tool-icon.green{background:#ecfdf5;color:#059669}
+.tool-icon.amber{background:#fffbeb;color:#d97706}
+.tool-icon.purple{background:#f5f3ff;color:#7c3aed}
+.tool-icon.rose{background:#fff1f2;color:#e11d48}
+.tool-content h3{font-size:1.05rem;font-weight:700;color:#0f172a;margin-bottom:4px}
+.tool-content p{font-size:.88rem;color:#64748b;line-height:1.5;margin-bottom:8px}
+.tool-tag{display:inline-block;font-size:.7rem;font-weight:600;padding:3px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:.3px}
+.tool-tag.popular{background:#dbeafe;color:#1d4ed8}
+.tool-tag.new{background:#d1fae5;color:#059669}
+.tool-tag.essential{background:#fef3c7;color:#92400e}
+
+/* Trust Bar */
+.trust{background:#f8fafc;border-top:1px solid #f1f5f9;border-bottom:1px solid #f1f5f9;padding:32px 20px;text-align:center}
+.trust-items{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;max-width:800px;margin:0 auto}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:.9rem;color:#475569}
+.trust-check{width:28px;height:28px;background:#ecfdf5;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#059669;font-size:.85rem;flex-shrink:0}
+
+/* How It Works */
+.how-section{padding:50px 0;background:#fff}
+.how-header{text-align:center;margin-bottom:40px}
+.how-header h2{font-size:1.8rem;font-weight:800;color:#0f172a;margin-bottom:8px}
+.how-header p{color:#64748b;font-size:1rem}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;max-width:900px;margin:0 auto}
+.how-step{text-align:center;padding:24px 16px}
+.how-num{width:44px;height:44px;background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;margin:0 auto 16px}
+.how-step h3{font-size:1rem;font-weight:700;color:#0f172a;margin-bottom:6px}
+.how-step p{font-size:.85rem;color:#64748b;line-height:1.5}
+
+/* Ad Slot */
+.ad-slot{background:#f8fafc;border:1.5px dashed #e2e8f0;padding:16px;text-align:center;margin:20px auto;border-radius:10px;color:#94a3b8;font-size:.78rem;max-width:728px}
+
+/* About */
+.about{padding:40px 0 60px}
+.about-card{background:#f8fafc;border-radius:16px;padding:36px;max-width:800px;margin:0 auto}
+.about-card h2{font-size:1.3rem;font-weight:700;color:#0f172a;margin-bottom:12px}
+.about-card p{color:#475569;font-size:.95rem;margin-bottom:10px}
+
+/* Footer */
+footer{background:#0f172a;color:rgba(255,255,255,.5);padding:30px 20px;text-align:center;font-size:.82rem}
+footer a{color:rgba(255,255,255,.7);text-decoration:none}
+footer a:hover{color:#fff}
+.footer-links{margin-top:8px}
+.footer-links a{margin:0 12px}
+
+/* Mobile */
+@media(max-width:640px){
+.hero h1{font-size:1.8rem}
+.hero-stats{gap:24px}
+.tool-grid{grid-template-columns:1fr}
+.tool-card{padding:18px}
+.trust-items{gap:20px;flex-direction:column;align-items:center}
+.how-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+<div class="hero-inner">
+<div class="hero-badge">100% Free &middot; No Signup &middot; Private</div>
+<h1>Financial calculators that <span>just work</span></h1>
+<p>Instant answers for salary, loans, investments, taxes, and everyday money questions. Built for speed and simplicity.</p>
+<div class="hero-stats">
+<div class="hero-stat"><div class="hero-stat-val">10</div><div class="hero-stat-label">Free Tools</div></div>
+<div class="hero-stat"><div class="hero-stat-val">0</div><div class="hero-stat-label">Signups Required</div></div>
+<div class="hero-stat"><div class="hero-stat-val">100%</div><div class="hero-stat-label">Private</div></div>
+</div>
+</div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust">
+<div class="trust-items">
+<div class="trust-item"><div class="trust-check">&#10003;</div>No data stored — runs in your browser</div>
+<div class="trust-item"><div class="trust-check">&#10003;</div>Works on phone, tablet & desktop</div>
+<div class="trust-item"><div class="trust-check">&#10003;</div>Updated for 2026 tax brackets</div>
+</div>
+</div>
+
+<div class="container">
+
+<!-- AD SLOT -->
+<div class="ad-slot">Advertisement</div>
+
+<!-- SALARY & INCOME TOOLS -->
+<div class="section">
+<div class="section-header">
+<div class="section-icon salary">&#128176;</div>
+<div><div class="section-label">Salary & income</div><div class="section-sub">Figure out what you actually earn</div></div>
+</div>
+<div class="tool-grid">
+<a href="hourly-to-salary-calculator.html" class="tool-card">
+<div class="tool-icon blue">&#9201;</div>
+<div class="tool-content">
+<h3>Hourly to Salary Calculator</h3>
+<p>Convert any hourly wage to annual salary, monthly, weekly, and daily pay. See what $15, $20, $25/hour really means per year.</p>
+<span class="tool-tag popular">Most Popular</span>
+</div>
+</a>
+<a href="salary-to-hourly-calculator.html" class="tool-card">
+<div class="tool-icon blue">&#128178;</div>
+<div class="tool-content">
+<h3>Salary to Hourly Calculator</h3>
+<p>Convert annual salary to an hourly rate. Find out what $50K, $75K, or $100K per year breaks down to per hour.</p>
+</div>
+</a>
+<a href="overtime-calculator.html" class="tool-card">
+<div class="tool-icon blue">&#9203;</div>
+<div class="tool-content">
+<h3>Overtime Pay Calculator</h3>
+<p>Calculate time-and-a-half and double-time pay. See how overtime hours impact your weekly and annual earnings.</p>
+</div>
+</a>
+<a href="take-home-pay-calculator.html" class="tool-card">
+<div class="tool-icon blue">&#128179;</div>
+<div class="tool-content">
+<h3>Take-Home Pay Estimator</h3>
+<p>Estimate your actual paycheck after federal tax, state tax, Social Security, Medicare, and 401(k) deductions.</p>
+<span class="tool-tag essential">Essential</span>
+</div>
+</a>
+</div>
+</div>
+
+<!-- EVERYDAY MONEY -->
+<div class="section">
+<div class="section-header">
+<div class="section-icon money">&#128181;</div>
+<div><div class="section-label">Everyday money</div><div class="section-sub">Quick math for real life</div></div>
+</div>
+<div class="tool-grid">
+<a href="tip-calculator.html" class="tool-card">
+<div class="tool-icon green">&#127860;</div>
+<div class="tool-content">
+<h3>Tip Calculator</h3>
+<p>Calculate tips for restaurants, delivery, and services. Split the bill between friends with one tap.</p>
+<span class="tool-tag popular">Most Popular</span>
+</div>
+</a>
+<a href="percentage-calculator.html" class="tool-card">
+<div class="tool-icon green">&#37;</div>
+<div class="tool-content">
+<h3>Percentage Calculator</h3>
+<p>Three tools in one: find X% of Y, calculate what percent X is of Y, and compute percentage change.</p>
+</div>
+</a>
+<a href="discount-calculator.html" class="tool-card">
+<div class="tool-icon green">&#127991;</div>
+<div class="tool-content">
+<h3>Discount & Sale Price Calculator</h3>
+<p>Find the final price after any discount. Includes sales tax calculation and quick presets for 10-50% off.</p>
+<span class="tool-tag new">New</span>
+</div>
+</a>
+</div>
+</div>
+
+<!-- AD SLOT -->
+<div class="ad-slot">Advertisement</div>
+
+<!-- INVESTING & LOANS -->
+<div class="section">
+<div class="section-header">
+<div class="section-icon invest">&#128200;</div>
+<div><div class="section-label">Investing & loans</div><div class="section-sub">Plan bigger financial decisions</div></div>
+</div>
+<div class="tool-grid">
+<a href="compound-interest-calculator.html" class="tool-card">
+<div class="tool-icon amber">&#128202;</div>
+<div class="tool-content">
+<h3>Compound Interest Calculator</h3>
+<p>See how your money grows over time with compound interest and monthly contributions. The power of long-term investing, visualized.</p>
+<span class="tool-tag essential">Essential</span>
+</div>
+</a>
+<a href="loan-payment-calculator.html" class="tool-card">
+<div class="tool-icon amber">&#127968;</div>
+<div class="tool-content">
+<h3>Loan Payment Calculator</h3>
+<p>Calculate monthly payments, total interest, and payoff date for any mortgage, auto loan, or personal loan.</p>
+</div>
+</a>
+<a href="roi-calculator.html" class="tool-card">
+<div class="tool-icon amber">&#128640;</div>
+<div class="tool-content">
+<h3>ROI Calculator</h3>
+<p>Calculate return on investment, annualized returns, net profit, and time to double your money.</p>
+</div>
+</a>
+</div>
+</div>
+
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-section">
+<div class="contai

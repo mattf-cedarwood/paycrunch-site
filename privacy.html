@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Privacy Policy — paycrunch.co</title><meta name="robots" content="noindex">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#f8f9fa;color:#1a1a2e;line-height:1.7}
+.container{max-width:800px;margin:0 auto;padding:0 20px}
+header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:40px 0 30px;text-align:center}
+header h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+header p{font-size:1.05rem;opacity:.85;max-width:600px;margin:0 auto}
+nav{background:#16213e;padding:10px 0;text-align:center;overflow-x:auto;white-space:nowrap}
+nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.82rem;padding:6px 12px;display:inline-block;border-radius:6px;transition:all .2s}
+nav a:hover,nav a.active{color:#fff;background:rgba(255,255,255,.1)}
+.ad-slot{background:#e9ecef;border:2px dashed #ced4da;padding:15px;text-align:center;margin:20px 0;border-radius:8px;color:#868e96;font-size:.8rem;min-height:90px;display:flex;align-items:center;justify-content:center}
+.card{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:32px;margin:20px 0}
+.card.hero{margin-top:-20px;position:relative;z-index:2}
+label{display:block;font-weight:600;margin-bottom:6px;font-size:.92rem;color:#495057}
+input[type="number"],select{width:100%;padding:12px 14px;border:2px solid #dee2e6;border-radius:10px;font-size:1.05rem;transition:border-color .2s,box-shadow .2s;background:#f8f9fa}
+input:focus,select:focus{outline:none;border-color:#0f3460;box-shadow:0 0 0 3px rgba(15,52,96,.1);background:#fff}
+.input-row{display:flex;gap:14px;flex-wrap:wrap}
+.input-row .input-group{flex:1;min-width:180px;margin-bottom:16px}
+.dollar-wrap{position:relative}
+.dollar-wrap::before{content:'$';position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.05rem;color:#868e96;font-weight:600}
+.dollar-wrap input{padding-left:28px}
+.pct-wrap{position:relative}
+.pct-wrap::after{content:'%';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.05rem;color:#868e96;font-weight:600}
+.pct-wrap input{padding-right:28px}
+.results{margin-top:20px;display:none}
+.results.visible{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.results-header{font-size:.9rem;font-weight:600;color:#868e96;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #f1f3f5}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result-item{background:#f8f9fa;border-radius:12px;padding:14px 18px;transition:background .2s}
+.result-item:hover{background:#e9ecef}
+.result-item.highlight{background:linear-gradient(135deg,#0f3460,#1a1a2e);color:#fff;grid-column:1/-1}
+.result-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;opacity:.7;margin-bottom:3px}
+.result-value{font-size:1.4rem;font-weight:700}
+.result-item.highlight .result-value{font-size:1.9rem}
+.result-note{font-size:.78rem;opacity:.6;margin-top:3px}
+.content-section{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:32px;margin:24px 0}
+.content-section h2{font-size:1.35rem;margin-bottom:14px;color:#1a1a2e}
+.content-section h3{font-size:1.1rem;margin:18px 0 8px;color:#16213e}
+.content-section p{color:#495057;margin-bottom:12px}
+.faq-item{border-bottom:1px solid #f1f3f5;padding:14px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:1rem;margin-bottom:6px;color:#1a1a2e;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:1.3rem;color:#0f3460;transition:transform .2s}
+.faq-q.open::after{content:'\2212'}
+.faq-a{color:#495057;display:none;padding-top:4px}
+.faq-a.visible{display:block}
+.ref-table{width:100%;border-collapse:collapse}
+.ref-table th{background:#1a1a2e;color:#fff;padding:10px 14px;text-align:left;font-size:.82rem;text-transform:uppercase;letter-spacing:.5px}
+.ref-table th:first-child{border-radius:8px 0 0 0}
+.ref-table th:last-child{border-radius:0 8px 0 0}
+.ref-table td{padding:10px 14px;border-bottom:1px solid #f1f3f5;font-size:.92rem}
+.ref-table tr:hover td{background:#f8f9fa}
+footer{text-align:center;padding:28px 20px;color:#868e96;font-size:.82rem}
+footer a{color:#0f3460;text-decoration:none}
+@media(max-width:600px){header h1{font-size:1.4rem}.card{padding:18px}.result-grid{grid-template-columns:1fr}.result-item.highlight .result-value{font-size:1.5rem}.input-row{flex-direction:column;gap:0}.ref-table td,.ref-table th{padding:7px 8px;font-size:.82rem}}
+</style></head><body>
+<header><div class="container"><h1>Privacy Policy</h1><p>Last updated: June 2026</p></div></header>
+<nav><div class="container"><a href="index.html">Home</a><a href="hourly-to-salary-calculator.html">Hourly to Salary</a><a href="salary-to-hourly-calculator.html">Salary to Hourly</a><a href="tip-calculator.html">Tip Calculator</a><a href="percentage-calculator.html">Percentage Calc</a><a href="overtime-calculator.html">Overtime Pay</a><a href="compound-interest-calculator.html">Compound Interest</a><a href="take-home-pay-calculator.html">Take-Home Pay</a><a href="loan-payment-calculator.html">Loan Payment</a><a href="roi-calculator.html">ROI Calculator</a><a href="discount-calculator.html">Discount/Sale</a></div></nav>
+<div class="container"><div class="content-section">
+<h2>Information We Collect</h2>
+<p>This website does not collect personal information. All calculations run entirely in your browser — no data is transmitted to our servers. We do not use cookies for tracking purposes.</p>
+<h3>Third-Party Advertising</h3>
+<p>We use Google AdSense to display advertisements. Google may use cookies and web beacons to serve ads based on your prior visits to this or other websites. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads">Google's Ads Settings</a>.</p>
+<h3>Analytics</h3>
+<p>We may use Google Analytics to understand how visitors use our site. This collects anonymous usage data such as pages visited, time spent, and referring sites. No personally identifiable information is collected.</p>
+<h3>Contact</h3>
+<p>For privacy questions, contact us at privacy@paycrunch.co.</p>
+</div></div><footer><div class="container">
+<p>&copy; 2026 paycrunch.co. All calculations are estimates. Consult a financial professional for personalized advice.</p>
+<p style="margin-top:6px"><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Use</a></p>
+</div></footer></body></html>

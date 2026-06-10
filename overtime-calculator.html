@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Overtime Pay Calculator — Free Online Calculator | paycrunch.co</title>
+<meta name="description" content="Free overtime pay calculator. Calculate time and a half, double time, weekly and annual overtime earnings instantly.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://paycrunch.co/overtime-calculator.html">
+<meta property="og:title" content="Overtime Pay Calculator">
+<meta property="og:description" content="Free overtime pay calculator. Calculate time and a half, double time, weekly and annual overtime earnings instantly.">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Overtime Pay Calculator","description":"Calculate overtime pay, time and a half, double time earnings","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#f8f9fa;color:#1a1a2e;line-height:1.7}
+.container{max-width:800px;margin:0 auto;padding:0 20px}
+header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:40px 0 30px;text-align:center}
+header h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+header p{font-size:1.05rem;opacity:.85;max-width:600px;margin:0 auto}
+nav{background:#16213e;padding:10px 0;text-align:center;overflow-x:auto;white-space:nowrap}
+nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.82rem;padding:6px 12px;display:inline-block;border-radius:6px;transition:all .2s}
+nav a:hover,nav a.active{color:#fff;background:rgba(255,255,255,.1)}
+.ad-slot{background:#e9ecef;border:2px dashed #ced4da;padding:15px;text-align:center;margin:20px 0;border-radius:8px;color:#868e96;font-size:.8rem;min-height:90px;display:flex;align-items:center;justify-content:center}
+.card{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:32px;margin:20px 0}
+.card.hero{margin-top:-20px;position:relative;z-index:2}
+label{display:block;font-weight:600;margin-bottom:6px;font-size:.92rem;color:#495057}
+input[type="number"],select{width:100%;padding:12px 14px;border:2px solid #dee2e6;border-radius:10px;font-size:1.05rem;transition:border-color .2s,box-shadow .2s;background:#f8f9fa}
+input:focus,select:focus{outline:none;border-color:#0f3460;box-shadow:0 0 0 3px rgba(15,52,96,.1);background:#fff}
+.input-row{display:flex;gap:14px;flex-wrap:wrap}
+.input-row .input-group{flex:1;min-width:180px;margin-bottom:16px}
+.dollar-wrap{position:relative}
+.dollar-wrap::before{content:'$';position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.05rem;color:#868e96;font-weight:600}
+.dollar-wrap input{padding-left:28px}
+.pct-wrap{position:relative}
+.pct-wrap::after{content:'%';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.05rem;color:#868e96;font-weight:600}
+.pct-wrap input{padding-right:28px}
+.results{margin-top:20px;display:none}
+.results.visible{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.results-header{font-size:.9rem;font-weight:600;color:#868e96;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #f1f3f5}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result-item{background:#f8f9fa;border-radius:12px;padding:14px 18px;transition:background .2s}
+.result-item:hover{background:#e9ecef}
+.result-item.highlight{background:linear-gradient(135deg,#0f3460,#1a1a2e);color:#fff;grid-column:1/-1}
+.result-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;opacity:.7;margin-bottom:3px}
+.result-value{font-size:1.4rem;font-weight:700}
+.result-item.highlight .result-value{font-size:1.9rem}
+.result-note{font-size:.78rem;opacity:.6;margin-top:3px}
+.content-section{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:32px;margin:24px 0}
+.content-section h2{font-size:1.35rem;margin-bottom:14px;color:#1a1a2e}
+.content-section h3{font-size:1.1rem;margin:18px 0 8px;color:#16213e}
+.content-section p{color:#495057;margin-bottom:12px}
+.faq-item{border-bottom:1px solid #f1f3f5;padding:14px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:1rem;margin-bottom:6px;color:#1a1a2e;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:1.3rem;color:#0f3460;transition:transform .2s}
+.faq-q.open::after{content:'\2212'}
+.faq-a{color:#495057;display:none;padding-top:4px}
+.faq-a.visible{display:block}
+.ref-table{width:100%;border-collapse:collapse}
+.ref-table th{background:#1a1a2e;color:#fff;padding:10px 14px;text-align:left;font-size:.82rem;text-transform:uppercase;letter-spacing:.5px}
+.ref-table th:first-child{border-radius:8px 0 0 0}
+.ref-table th:last-child{border-radius:0 8px 0 0}
+.ref-table td{padding:10px 14px;border-bottom:1px solid #f1f3f5;font-size:.92rem}
+.ref-table tr:hover td{background:#f8f9fa}
+footer{text-align:center;padding:28px 20px;color:#868e96;font-size:.82rem}
+footer a{color:#0f3460;text-decoration:none}
+@media(max-width:600px){header h1{font-size:1.4rem}.card{padding:18px}.result-grid{grid-template-columns:1fr}.result-item.highlight .result-value{font-size:1.5rem}.input-row{flex-direction:column;gap:0}.ref-table td,.ref-table th{padding:7px 8px;font-size:.82rem}}
+</style>
+</head>
+<body>
+<header><div class="container"><h1>Overtime Pay Calculator</h1><p>Calculate overtime pay with time-and-a-half or double-time rates.</p></div></header>
+<nav><div class="container"><a href="index.html">Home</a><a href="hourly-to-salary-calculator.html">Hourly to Salary</a><a href="salary-to-hourly-calculator.html">Salary to Hourly</a><a href="tip-calculator.html">Tip Calculator</a><a href="percentage-calculator.html">Percentage Calc</a><a href="overtime-calculator.html" class="active">Overtime Pay</a><a href="compound-interest-calculator.html">Compound Interest</a><a href="take-home-pay-calculator.html">Take-Home Pay</a><a href="loan-payment-calculator.html">Loan Payment</a><a href="roi-calculator.html">ROI Calculator</a><a href="discount-calculator.html">Discount/Sale</a></div></nav>
+<div class="container">
+<div class="card hero">
+<div class="input-row">
+<div class="input-group"><label for="hr">Regular Hourly Rate</label><div class="dollar-wrap"><input type="number" id="hr" placeholder="20.00" min="0" step="0.25" inputmode="decimal"></div></div>
+<div class="input-group"><label for="regH">Regular Hours/Week</label><input type="number" id="regH" value="40" min="0" max="168"></div>
+<div class="input-group"><label for="otH">Overtime Hours/Week</label><input type="number" id="otH" value="10" min="0" max="128"></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label for="otRate">Overtime Multiplier</label><select id="otRate"><option value="1.5" selected>1.5x (Time and a half)</option><option value="2">2x (Double time)</option></select></div>
+</div>
+<div class="results" id="res">
+<div class="results-header">Pay Breakdown</div>
+<div class="result-grid">
+<div class="result-item highlight"><div class="result-label">Total Weekly Pay</div><div class="result-value" id="rWeek">$0</div></div>
+<div class="result-item"><div class="result-label">Regular Pay</div><div class="result-value" id="rReg">$0</div></div>
+<div class="result-item"><div class="result-label">Overtime Pay</div><div class="result-value" id="rOT">$0</div></div>
+<div class="result-item"><div class="result-label">OT Hourly Rate</div><div class="result-value" id="rOTRate">$0</div></div>
+<div class="result-item"><div class="result-label">Monthly Estimate</div><div class="result-value" id="rMonth">$0</div></div>
+<div class="result-item"><div class="result-label">Annual Estimate</div><div class="result-value" id="rYear">$0</div></div>
+</div></div></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+<div class="content-section"><h2>Understanding Overtime Pay</h2>
+<p>Under the Fair Labor Standards Act (FLSA), non-exempt employees must receive overtime pay of at least 1.5 times their regular rate for all hours worked over 40 in a workweek. Some states and employers offer double-time (2x) for hours beyond a certain threshold.</p>
+<h3>Who Qualifies for Overtime?</h3>
+<p>Most hourly employees qualify. Salaried employees earning below $58,656/year (as of 2024) also generally qualify. Exempt employees — typically salaried professionals, executives, and administrators earning above the threshold — do not receive overtime pay.</p>
+<h3>How Overtime Boosts Annual Income</h3>
+<p>Working just 5 hours of weekly overtime at $20/hour adds $7,800 to your annual income ($150/week x 52 weeks). At 10 hours/week, that's $15,600 extra per year. Overtime can significantly impact your financial picture.</p></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+<div class="content-section"><h2>Frequently Asked Questions</h2>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is time and a half?</div><div class="faq-a">Time and a half means 1.5x your regular rate. If you earn $20/hour, overtime is $30/hour. This is the federal minimum for overtime.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">When does overtime start?</div><div class="faq-a">Federal law requires overtime after 40 hours in a workweek. Some states (like California) also require daily overtime after 8 hours in a single day.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is overtime taxed more?</div><div class="faq-a">Overtime isn't taxed at a higher rate. It may push you into a higher tax bracket for the extra earnings, but your regular pay isn't taxed more.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can my employer refuse to pay overtime?</div><div class="faq-a">If you're non-exempt, your employer must pay overtime by law. Refusing is a violation of the FLSA and you can file a complaint with the Department of Labor.</div></div></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+</div>
+<footer><div class="container">
+<p>&copy; 2026 paycrunch.co. All calculations are estimates. Consult a financial professional for personalized advice.</p>
+<p style="margin-top:6px"><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Use</a></p>
+</div></footer>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString()}
+function fmtDec(n,d){return '$'+n.toFixed(d).replace(/\B(?=(\d{3})+(?!\d))/g,',')}
+function fmtPct(n){return n.toFixed(2)+'%'}
+function fmtNum(n){return Math.round(n).toLocaleString()}
+
+function toggleFaq(el){var a=el.nextElementSibling,o=el.classList.contains('open');
+document.querySelectorAll('.faq-q').forEach(function(q){q.classList.remove('open')});
+document.querySelectorAll('.faq-a').forEach(function(a){a.classList.remove('visible')});
+if(!o){el.classList.add('open');a.classList.add('visible')}}
+
+
+function calc(){var h=parseFloat(document.getElementById('hr').value),r=parseFloat(document.getElementById('regH').value),o=parseFloat(document.getElementById('otH').value),m=parseFloat(document.getElementById('otRate').value);
+if(isNaN(h)||h<=0){document.getElementById('res').classList.remove('visible');return}
+var reg=h*r,ot=h*m*o,total=reg+ot;document.getElementById('rWeek').textContent=fmtDec(total,2);document.getElementById('rReg').textContent=fmtDec(reg,2);
+document.getElementById('rOT').textContent=fmtDec(ot,2);document.getElementById('rOTRate').textContent=fmtDec(h*m,2);
+document.getElementById('rMonth').textContent=fmt(total*4.33);document.getElementById('rYear').textContent=fmt(total*52);document.getElementById('res').classList.add('visible')}
+['hr','regH','otH'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
+document.getElementById('otRate').addEventListener('change',calc);document.getElementById('hr').focus();
+</script>
+</body>
+</html>
