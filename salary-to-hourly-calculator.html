@@ -336,7 +336,7 @@ var hr=s/(w*y);document.getElementById('rHr').textContent=fmtDec(hr,2);document.
 document.getElementById('rBi').textContent=fmt(s/26);document.getElementById('rWk').textContent=fmt(s/52);
 document.getElementById('rDy').textContent=fmt(s/260);document.getElementById('res').classList.add('visible')}
 document.getElementById('sal').addEventListener('input',calc);document.getElementById('hpw').addEventListener('input',calc);
-document.getElementById('wpy').addEventListener('change',calc);document.getElementById('sal').focus();
+document.getElementById('wpy').addEventListener('change',calc);calc();document.getElementById('sal').focus();
 
 </script>
 </body>

@@ -337,7 +337,7 @@ if(annualized>0){var be=Math.log(2)/Math.log(1+annualized/100);document.getEleme
 else{document.getElementById('rBreakeven').textContent='N/A (negative return)'}
 document.getElementById('res').classList.add('visible')}
 ['invested','returned','period'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
-document.getElementById('invested').focus();
+calc();document.getElementById('invested').focus();
 
 </script>
 </body>

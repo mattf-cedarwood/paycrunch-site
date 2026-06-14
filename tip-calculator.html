@@ -343,7 +343,7 @@ document.getElementById('rTotal').textContent=fmtDec(total,2);document.getElemen
 document.getElementById('rPerson').textContent=fmtDec(total/s,2);document.getElementById('rTipPerson').textContent=fmtDec(tip/s,2);
 document.getElementById('rBillPerson').textContent=fmtDec(b/s,2);document.getElementById('res').classList.add('visible')}
 document.getElementById('bill').addEventListener('input',calc);document.getElementById('tipPct').addEventListener('input',calc);
-document.getElementById('split').addEventListener('input',calc);document.getElementById('bill').focus();
+document.getElementById('split').addEventListener('input',calc);calc();document.getElementById('bill').focus();
 
 </script>
 </body>

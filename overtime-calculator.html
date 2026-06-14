@@ -338,7 +338,7 @@ var reg=h*r,ot=h*m*o,total=reg+ot;document.getElementById('rWeek').textContent=f
 document.getElementById('rOT').textContent=fmtDec(ot,2);document.getElementById('rOTRate').textContent=fmtDec(h*m,2);
 document.getElementById('rMonth').textContent=fmt(total*4.33);document.getElementById('rYear').textContent=fmt(total*52);document.getElementById('res').classList.add('visible')}
 ['hr','regH','otH'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
-document.getElementById('otRate').addEventListener('change',calc);document.getElementById('hr').focus();
+document.getElementById('otRate').addEventListener('change',calc);calc();document.getElementById('hr').focus();
 
 </script>
 </body>

@@ -344,7 +344,7 @@ document.getElementById('rSale').textContent=fmtDec(sale,2);document.getElementB
 document.getElementById('rFinal').textContent=fmtDec(final_,2);document.getElementById('rTax').textContent=fmtDec(tax,2);
 document.getElementById('res').classList.add('visible')}
 ['origPrice','discPct','taxRate'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
-document.getElementById('origPrice').focus();
+calc();document.getElementById('origPrice').focus();
 
 </script>
 </body>

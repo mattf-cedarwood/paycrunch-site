@@ -340,7 +340,7 @@ document.getElementById('rFuture').textContent=fmt(fv);document.getElementById('
 document.getElementById('rInterest').textContent=fmt(interest);document.getElementById('rMultiple').textContent=(totalInv>0?(fv/totalInv).toFixed(1)+'x':'—');
 var ear=(Math.pow(1+rn,n)-1)*100;document.getElementById('rEffective').textContent=ear.toFixed(2)+'%';document.getElementById('res').classList.add('visible')}
 ['principal','contrib','rate','years'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
-document.getElementById('compound').addEventListener('change',calc);document.getElementById('principal').focus();
+document.getElementById('compound').addEventListener('change',calc);calc();document.getElementById('principal').focus();
 
 </script>
 </body>

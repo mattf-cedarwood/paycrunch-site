@@ -337,7 +337,7 @@ document.getElementById('rInt').textContent=fmt(interest);document.getElementByI
 document.getElementById('rDate').textContent=d.toLocaleDateString('en-US',{month:'long',year:'numeric'});
 document.getElementById('res').classList.add('visible')}
 ['loanAmt','intRate','loanTerm'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
-document.getElementById('loanAmt').focus();
+calc();document.getElementById('loanAmt').focus();
 
 </script>
 </body>

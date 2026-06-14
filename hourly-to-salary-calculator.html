@@ -339,7 +339,7 @@ var a=h*w*y;document.getElementById('rAnn').textContent=fmt(a);document.getEleme
 document.getElementById('rBi').textContent=fmt(h*w*2);document.getElementById('rWk').textContent=fmt(h*w);
 document.getElementById('rDy').textContent=fmt(h*(w/5));document.getElementById('res').classList.add('visible')}
 document.getElementById('hr').addEventListener('input',calc);document.getElementById('hpw').addEventListener('input',calc);
-document.getElementById('wpy').addEventListener('change',calc);document.getElementById('hr').focus();
+document.getElementById('wpy').addEventListener('change',calc);calc();document.getElementById('hr').focus();
 
 </script>
 </body>

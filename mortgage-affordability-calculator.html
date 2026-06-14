@@ -393,7 +393,7 @@ document.getElementById('res').classList.add('visible');
 
 ['income','debts','down','rate'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
 document.getElementById('term').addEventListener('change',calc);
-document.getElementById('income').focus();
+calc();document.getElementById('income').focus();
 
 </script>
 </body>

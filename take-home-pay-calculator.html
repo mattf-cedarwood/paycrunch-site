@@ -351,7 +351,7 @@ document.getElementById('rState').textContent=fmt(state);document.getElementById
 document.getElementById('r401').textContent=fmt(contrib);document.getElementById('rEff').textContent=((fed+state+fica)/g*100).toFixed(1)+'%';
 document.getElementById('res').classList.add('visible')}
 ['gross','state','contrib401'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
-document.getElementById('filing').addEventListener('change',calc);document.getElementById('gross').focus();
+document.getElementById('filing').addEventListener('change',calc);calc();document.getElementById('gross').focus();
 
 </script>
 </body>

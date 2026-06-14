@@ -410,7 +410,7 @@ document.getElementById('res').classList.add('visible');
 
 ['grossPay'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
 ['freq','filing','state'].forEach(function(id){document.getElementById(id).addEventListener('change',calc)});
-document.getElementById('grossPay').focus();
+calc();document.getElementById('grossPay').focus();
 
 </script>
 </body>
