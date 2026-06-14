@@ -130,6 +130,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .hdr-nav{display:none}
 .bar-row{flex-wrap:wrap}.bar-label{width:100%;text-align:left}
 }
+
+.salary-slider-wrap{margin-top:18px;background:linear-gradient(135deg,#F0F9FF 0%,#F0FDFA 100%);border:1px solid #BAE6FD;border-radius:12px;padding:18px 20px 14px}
+.slider-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2px}
+.slider-title{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--label);font-weight:600}
+.slider-current{font-size:1.05rem;font-weight:700;color:var(--navy)}
+.slider-track-wrap{position:relative;padding:14px 0 6px}
+.salary-slider{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:4px;background:linear-gradient(to right,#99F6E4,#0D9488,#0F2B46);outline:none;cursor:pointer}
+.salary-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:3px solid var(--navy);cursor:pointer;box-shadow:0 2px 8px rgba(15,43,70,0.25);transition:box-shadow .15s}
+.salary-slider::-webkit-slider-thumb:hover{box-shadow:0 2px 12px rgba(15,43,70,0.4)}
+.salary-slider::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#fff;border:3px solid var(--navy);cursor:pointer;box-shadow:0 2px 8px rgba(15,43,70,0.25)}
+.slider-labels{display:flex;justify-content:space-between;font-size:.68rem;color:var(--label);font-weight:500}
+.slider-label-left{color:var(--teal)}
+.slider-label-right{color:var(--navy)}
+
 </style>
 </head>
 <body>
@@ -176,17 +190,30 @@ pay<span>crunch</span>
 <div class="card" style="padding:32px">
 <div class="badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Updated June 2026 &middot; BLS Data</div>
 <div class="hero-q">How much does a Cloud Architect make?</div>
-<div class="hero-a">$145,500<small>per year</small></div>
-<div class="hero-sub">National median salary &middot; $69.95/hour &middot; $12,125/month</div>
+<div class="hero-a"><span id="heroAmt">$145,500</span><small>per year</small></div>
+<div class="hero-sub" id="heroSub">National median salary &middot; $69.95/hour &middot; $12,125/month</div>
 <div class="hero-grid">
-<div class="hero-grid-item"><div class="hg-label">Hourly</div><div class="hg-val">$69.95</div></div>
-<div class="hero-grid-item"><div class="hg-label">Monthly</div><div class="hg-val">$12,125</div></div>
-<div class="hero-grid-item"><div class="hg-label">Weekly</div><div class="hg-val">$2,798</div></div>
-<div class="hero-grid-item"><div class="hg-label">Daily</div><div class="hg-val">$560</div></div>
+<div class="hero-grid-item"><div class="hg-label">Hourly</div><div class="hg-val hg-val-dyn">$69.95</div></div>
+<div class="hero-grid-item"><div class="hg-label">Monthly</div><div class="hg-val hg-val-dyn">$12,125</div></div>
+<div class="hero-grid-item"><div class="hg-label">Weekly</div><div class="hg-val hg-val-dyn">$2,798</div></div>
+<div class="hero-grid-item"><div class="hg-label">Daily</div><div class="hg-val hg-val-dyn">$560</div></div>
 </div>
 <div class="thp-bar">
 <div class="thp-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Estimated take-home</div>
-<div class="thp-val">$109,911/yr</div>
+<div class="thp-val" id="thpVal">$109,911/yr</div>
+</div>
+<div class="salary-slider-wrap">
+<div class="slider-header">
+<div class="slider-title">Adjust Your Market Position</div>
+<div class="slider-current" id="sliderVal">$145,500/yr</div>
+</div>
+<div class="slider-track-wrap">
+<input type="range" min="0" max="100" value="43" class="salary-slider" id="salarySlider">
+</div>
+<div class="slider-labels">
+<span class="slider-label-left">Entry Level &middot; $92,000</span>
+<span class="slider-label-right">Top Earner &middot; $215,000</span>
+</div>
 </div>
 </div>
 
@@ -412,8 +439,8 @@ pay<span>crunch</span>
 
     <div style="font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:12px">Quick Facts</div>
     <table style="width:100%;font-size:.8rem;color:var(--body);line-height:2.2">
-    <tr><td style="color:var(--label)">Median Salary</td><td style="text-align:right;font-weight:600;color:var(--navy)">$145,500</td></tr>
-    <tr><td style="color:var(--label)">Hourly Rate</td><td style="text-align:right;font-weight:600;color:var(--navy)">$69.95</td></tr>
+    <tr><td style="color:var(--label)">Median Salary</td><td style="text-align:right;font-weight:600;color:var(--navy)"><span id="qfMedian">$145,500</span></td></tr>
+    <tr><td style="color:var(--label)">Hourly Rate</td><td style="text-align:right;font-weight:600;color:var(--navy)"><span id="qfHourly">$69.95</span></td></tr>
     <tr><td style="color:var(--label)">Entry Level</td><td style="text-align:right;font-weight:600">$92,000</td></tr>
     <tr><td style="color:var(--label)">Top Earners</td><td style="text-align:right;font-weight:600">$215,000</td></tr>
     <tr><td style="color:var(--label)">Education</td><td style="text-align:right;font-weight:500;font-size:.72rem">Bachelor&amp;#x27;s in CS/IT; mast</td></tr>
@@ -474,6 +501,22 @@ pay<span>crunch</span>
 var SD={"AL": 126585, "AK": 152775, "AZ": 138225, "AR": 122220, "CA": 167325, "CO": 152775, "CT": 160050, "DE": 148410, "FL": 141135, "GA": 135315, "HI": 171690, "ID": 132405, "IL": 145500, "IN": 130950, "IA": 128040, "KS": 129495, "KY": 126585, "LA": 128040, "ME": 138225, "MD": 157140, "MA": 162960, "MI": 135315, "MN": 145500, "MS": 120765, "MO": 129495, "MT": 130950, "NE": 130950, "NV": 142590, "NH": 152775, "NJ": 162960, "NM": 129495, "NY": 167325, "NC": 135315, "ND": 133860, "OH": 132405, "OK": 125130, "OR": 149865, "PA": 141135, "RI": 151320, "SC": 130950, "SD": 126585, "TN": 130950, "TX": 138225, "UT": 138225, "VT": 145500, "VA": 151320, "WA": 160050, "WV": 122220, "WI": 135315, "WY": 132405};
 function calcState(){var s=document.getElementById('stSel').value;if(!s||!SD[s]){document.getElementById('stResult').textContent='Select a state above';document.getElementById('stSub').textContent='';return;}var sal=SD[s];document.getElementById('stResult').textContent='$'+sal.toLocaleString()+'/year';document.getElementById('stSub').textContent='$'+(sal/12|0).toLocaleString()+'/month \u00b7 $'+(sal/2080).toFixed(2)+'/hour \u00b7 '+document.getElementById('stSel').options[document.getElementById('stSel').selectedIndex].text;}
 function tf(e){var a=e.nextElementSibling,o=e.classList.contains('open');document.querySelectorAll('.faq-q').forEach(function(q){q.classList.remove('open')});document.querySelectorAll('.faq-a').forEach(function(a){a.classList.remove('v')});if(!o){e.classList.add('open');a.classList.add('v')}}
+
+var _sLow=92000,_sHigh=215000,_sMed=145500;
+var _slider=document.getElementById('salarySlider');
+if(_slider){_slider.addEventListener('input',function(){
+var p=this.value/100;var sal=Math.round(_sLow+(_sHigh-_sLow)*p);
+var hr=sal/2080;var mo=sal/12;var wk=sal/52;var dy=sal/260;var th=Math.round(sal*0.76);
+document.getElementById('sliderVal').textContent='$'+sal.toLocaleString()+'/yr';
+var ha=document.getElementById('heroAmt');if(ha)ha.textContent='$'+sal.toLocaleString();
+var hs=document.getElementById('heroSub');if(hs)hs.textContent='National median salary \u00b7 $'+hr.toFixed(2)+'/hour \u00b7 $'+Math.round(mo).toLocaleString()+'/month';
+var hgv=document.querySelectorAll('.hg-val-dyn');
+if(hgv.length>=4){hgv[0].textContent='$'+hr.toFixed(2);hgv[1].textContent='$'+Math.round(mo).toLocaleString();hgv[2].textContent='$'+Math.round(wk).toLocaleString();hgv[3].textContent='$'+Math.round(dy).toLocaleString()}
+var tv=document.getElementById('thpVal');if(tv)tv.textContent='$'+th.toLocaleString()+'/yr';
+var qm=document.getElementById('qfMedian');if(qm)qm.textContent='$'+sal.toLocaleString();
+var qh=document.getElementById('qfHourly');if(qh)qh.textContent='$'+hr.toFixed(2);
+})}
+
 </script>
 </body>
 </html>
