@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Mortgage Affordability Calculator — How Much House Can I Afford? | paycrunch.co</title>
+<meta name="description" content="Free mortgage affordability calculator. Find out how much house you can afford based on your income, debts, down payment, and interest rate. See max home price, monthly payment, and DTI ratio.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://paycrunch.co/mortgage-affordability-calculator.html">
+<meta property="og:title" content="Mortgage Affordability Calculator — How Much House Can I Afford?">
+<meta property="og:description" content="Free mortgage affordability calculator. Find out how much house you can afford based on your income, debts, down payment, and interest rate.">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Mortgage Affordability Calculator","description":"Calculate how much house you can afford based on income, debts, down payment, and interest rate","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much house can I afford on a $100K salary?","acceptedAnswer":{"@type":"Answer","text":"On a $100K salary with no other debts, you can typically afford a home priced between $350,000 and $450,000, depending on your down payment, interest rate, and location. Lenders generally want your total housing payment under 28% of gross monthly income."}},{"@type":"Question","name":"What is the 28/36 rule for mortgages?","acceptedAnswer":{"@type":"Answer","text":"The 28/36 rule says your housing costs should not exceed 28% of gross monthly income (front-end ratio), and total debt payments should not exceed 36% of gross monthly income (back-end ratio). Some lenders allow up to 43% back-end DTI for qualified borrowers."}},{"@type":"Question","name":"How much down payment do I need to buy a house?","acceptedAnswer":{"@type":"Answer","text":"Conventional loans typically require 3-20% down. FHA loans require 3.5% minimum. VA and USDA loans may require 0% down. A 20% down payment eliminates private mortgage insurance (PMI), saving $100-300/month on a typical loan."}},{"@type":"Question","name":"Does my DTI ratio affect mortgage approval?","acceptedAnswer":{"@type":"Answer","text":"Yes. Most lenders require a back-end DTI ratio of 43% or lower. FHA loans allow up to 50% in some cases. Lower DTI ratios get better interest rates and higher approval odds. Paying down existing debts before applying can significantly increase your buying power."}},{"@type":"Question","name":"Should I include property taxes and insurance in my calculation?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your total monthly housing payment includes principal, interest, property taxes, and homeowner's insurance (PITI). Property taxes average 1-2% of home value annually, and insurance costs $1,000-3,000/year depending on location and coverage."}}]}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#f8f9fa;color:#1a1a2e;line-height:1.7}
+.container{max-width:800px;margin:0 auto;padding:0 20px}
+header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:40px 0 30px;text-align:center}
+header h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+header p{font-size:1.05rem;opacity:.85;max-width:600px;margin:0 auto}
+nav{background:#16213e;padding:10px 0;text-align:center;overflow-x:auto;white-space:nowrap}
+nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.82rem;padding:6px 12px;display:inline-block;border-radius:6px;transition:all .2s}
+nav a:hover,nav a.active{color:#fff;background:rgba(255,255,255,.1)}
+.ad-slot{background:#e9ecef;border:2px dashed #ced4da;padding:15px;text-align:center;margin:20px 0;border-radius:8px;color:#868e96;font-size:.8rem;min-height:90px;display:flex;align-items:center;justify-content:center}
+.card{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:32px;margin:20px 0}
+.card.hero{margin-top:-20px;position:relative;z-index:2}
+label{display:block;font-weight:600;margin-bottom:6px;font-size:.92rem;color:#495057}
+input[type="number"],select{width:100%;padding:12px 14px;border:2px solid #dee2e6;border-radius:10px;font-size:1.05rem;transition:border-color .2s,box-shadow .2s;background:#f8f9fa}
+input:focus,select:focus{outline:none;border-color:#0f3460;box-shadow:0 0 0 3px rgba(15,52,96,.1);background:#fff}
+.input-row{display:flex;gap:14px;flex-wrap:wrap}
+.input-row .input-group{flex:1;min-width:180px;margin-bottom:16px}
+.dollar-wrap{position:relative}
+.dollar-wrap::before{content:'$';position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.05rem;color:#868e96;font-weight:600}
+.dollar-wrap input{padding-left:28px}
+.pct-wrap{position:relative}
+.pct-wrap::after{content:'%';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.05rem;color:#868e96;font-weight:600}
+.pct-wrap input{padding-right:28px}
+.results{margin-top:20px;display:none}
+.results.visible{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.results-header{font-size:.9rem;font-weight:600;color:#868e96;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #f1f3f5}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result-item{background:#f8f9fa;border-radius:12px;padding:14px 18px;transition:background .2s}
+.result-item:hover{background:#e9ecef}
+.result-item.highlight{background:linear-gradient(135deg,#0f3460,#1a1a2e);color:#fff;grid-column:1/-1}
+.result-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;opacity:.7;margin-bottom:3px}
+.result-value{font-size:1.4rem;font-weight:700}
+.result-item.highlight .result-value{font-size:1.9rem}
+.result-note{font-size:.78rem;opacity:.6;margin-top:3px}
+.content-section{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:32px;margin:24px 0}
+.content-section h2{font-size:1.35rem;margin-bottom:14px;color:#1a1a2e}
+.content-section h3{font-size:1.1rem;margin:18px 0 8px;color:#16213e}
+.content-section p{color:#495057;margin-bottom:12px}
+.faq-item{border-bottom:1px solid #f1f3f5;padding:14px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:1rem;margin-bottom:6px;color:#1a1a2e;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:1.3rem;color:#0f3460;transition:transform .2s}
+.faq-q.open::after{content:'\2212'}
+.faq-a{color:#495057;display:none;padding-top:4px}
+.faq-a.visible{display:block}
+.ref-table{width:100%;border-collapse:collapse}
+.ref-table th{background:#1a1a2e;color:#fff;padding:10px 14px;text-align:left;font-size:.82rem;text-transform:uppercase;letter-spacing:.5px}
+.ref-table th:first-child{border-radius:8px 0 0 0}
+.ref-table th:last-child{border-radius:0 8px 0 0}
+.ref-table td{padding:10px 14px;border-bottom:1px solid #f1f3f5;font-size:.92rem}
+.ref-table tr:hover td{background:#f8f9fa}
+footer{text-align:center;padding:28px 20px;color:#868e96;font-size:.82rem}
+footer a{color:#0f3460;text-decoration:none}
+@media(max-width:600px){header h1{font-size:1.4rem}.card{padding:18px}.result-grid{grid-template-columns:1fr}.result-item.highlight .result-value{font-size:1.5rem}.input-row{flex-direction:column;gap:0}.ref-table td,.ref-table th{padding:7px 8px;font-size:.82rem}}
+</style>
+</head>
+<body>
+<header><div class="container"><h1>Mortgage Affordability Calculator</h1><p>How much house can you afford? Enter your income, debts, and down payment to find out.</p></div></header>
+<nav><div class="container"><a href="index.html">Home</a><a href="hourly-to-salary-calculator.html">Hourly to Salary</a><a href="salary-to-hourly-calculator.html">Salary to Hourly</a><a href="tip-calculator.html">Tip Calculator</a><a href="percentage-calculator.html">Percentage Calc</a><a href="overtime-calculator.html">Overtime Pay</a><a href="compound-interest-calculator.html">Compound Interest</a><a href="take-home-pay-calculator.html">Take-Home Pay</a><a href="loan-payment-calculator.html">Loan Payment</a><a href="roi-calculator.html">ROI Calculator</a><a href="discount-calculator.html">Discount/Sale</a><a href="mortgage-affordability-calculator.html" class="active">Mortgage</a><a href="debt-payoff-calculator.html">Debt Payoff</a><a href="paycheck-calculator.html">Paycheck</a><a href="retirement-calculator.html">Retirement</a><a href="net-worth-calculator.html">Net Worth</a></div></nav>
+<div class="container">
+<div class="card hero">
+<div class="input-row">
+<div class="input-group"><label for="income">Annual Gross Income</label><div class="dollar-wrap"><input type="number" id="income" placeholder="85000" min="0" step="1000" inputmode="decimal"></div></div>
+<div class="input-group"><label for="debts">Monthly Debt Payments</label><div class="dollar-wrap"><input type="number" id="debts" value="400" min="0" step="50" inputmode="decimal"></div></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label for="down">Down Payment</label><div class="dollar-wrap"><input type="number" id="down" value="50000" min="0" step="1000" inputmode="decimal"></div></div>
+<div class="input-group"><label for="rate">Interest Rate</label><div class="pct-wrap"><input type="number" id="rate" value="6.75" min="0" max="20" step="0.125" inputmode="decimal"></div></div>
+<div class="input-group"><label for="term">Loan Term</label><select id="term"><option value="30" selected>30 Years</option><option value="20">20 Years</option><option value="15">15 Years</option><option value="10">10 Years</option></select></div>
+</div>
+<div class="results" id="res">
+<div class="results-header">Your Home Buying Power</div>
+<div class="result-grid">
+<div class="result-item highlight"><div class="result-label">Maximum Home Price</div><div class="result-value" id="rMax">$0</div><div class="result-note">Based on 28/36 rule</div></div>
+<div class="result-item"><div class="result-label">Max Loan Amount</div><div class="result-value" id="rLoan">$0</div></div>
+<div class="result-item"><div class="result-label">Monthly Payment (P&I)</div><div class="result-value" id="rPayment">$0</div></div>
+<div class="result-item"><div class="result-label">Front-End DTI</div><div class="result-value" id="rFrontDTI">0%</div></div>
+<div class="result-item"><div class="result-label">Back-End DTI</div><div class="result-value" id="rBackDTI">0%</div></div>
+<div class="result-item"><div class="result-label">Total Interest Paid</div><div class="result-value" id="rInterest">$0</div></div>
+<div class="result-item"><div class="result-label">Est. Property Tax/mo</div><div class="result-value" id="rTax">$0</div></div>
+</div></div></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+<div class="content-section"><h2>How We Calculate Your Affordability</h2>
+<p>This calculator uses the <strong>28/36 rule</strong>, the standard guideline used by most mortgage lenders. Your total housing payment (principal, interest, taxes, insurance) should not exceed 28% of your gross monthly income, and your total monthly debts should not exceed 36%.</p>
+<h3>What Counts as Monthly Debt?</h3>
+<p>Include car payments, student loan payments, minimum credit card payments, personal loans, child support, and any other recurring monthly obligations. Do not include utilities, groceries, or other living expenses.</p>
+<h3>Down Payment Impact</h3>
+<p>A larger down payment increases your buying power and reduces your monthly payment. Putting 20% down also eliminates private mortgage insurance (PMI), which typically costs 0.5-1% of the loan amount annually. On a $300,000 loan, that saves $125-250/month.</p></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+<div class="content-section"><h2>Frequently Asked Questions</h2>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How much house can I afford on a $100K salary?</div><div class="faq-a">On a $100K salary with no other debts, you can typically afford a home priced between $350,000 and $450,000, depending on your down payment, interest rate, and location. Lenders generally want your total housing payment under 28% of gross monthly income.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the 28/36 rule for mortgages?</div><div class="faq-a">The 28/36 rule says your housing costs should not exceed 28% of gross monthly income (front-end ratio), and total debt payments should not exceed 36% of gross monthly income (back-end ratio). Some lenders allow up to 43% back-end DTI for qualified borrowers.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How much down payment do I need to buy a house?</div><div class="faq-a">Conventional loans typically require 3-20% down. FHA loans require 3.5% minimum. VA and USDA loans may require 0% down. A 20% down payment eliminates private mortgage insurance (PMI), saving $100-300/month on a typical loan.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Does my DTI ratio affect mortgage approval?</div><div class="faq-a">Yes. Most lenders require a back-end DTI ratio of 43% or lower. FHA loans allow up to 50% in some cases. Lower DTI ratios get better interest rates and higher approval odds. Paying down existing debts before applying can significantly increase your buying power.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Should I include property taxes and insurance in my calculation?</div><div class="faq-a">Yes. Your total monthly housing payment includes principal, interest, property taxes, and homeowner's insurance (PITI). Property taxes average 1-2% of home value annually, and insurance costs $1,000-3,000/year depending on location and coverage.</div></div></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+</div>
+<footer><div class="container">
+<p>&copy; 2026 paycrunch.co. All calculations are estimates. Consult a financial professional for personalized advice.</p>
+<p style="margin-top:6px"><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Use</a></p>
+</div></footer>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString()}
+function fmtDec(n,d){return '$'+n.toFixed(d).replace(/\B(?=(\d{3})+(?!\d))/g,',')}
+function fmtPct(n){return n.toFixed(1)+'%'}
+
+function toggleFaq(el){var a=el.nextElementSibling,o=el.classList.contains('open');
+document.querySelectorAll('.faq-q').forEach(function(q){q.classList.remove('open')});
+document.querySelectorAll('.faq-a').forEach(function(a){a.classList.remove('visible')});
+if(!o){el.classList.add('open');a.classList.add('visible')}}
+
+function calc(){
+var income=parseFloat(document.getElementById('income').value)||0;
+var debts=parseFloat(document.getElementById('debts').value)||0;
+var down=parseFloat(document.getElementById('down').value)||0;
+var rate=parseFloat(document.getElementById('rate').value)/100;
+var term=parseInt(document.getElementById('term').value);
+if(income<=0){document.getElementById('res').classList.remove('visible');return}
+
+var monthlyIncome=income/12;
+// 28% front-end rule: max housing payment
+var maxHousingPayment=monthlyIncome*0.28;
+// 36% back-end rule: max total debts
+var maxTotalDebt=monthlyIncome*0.36;
+var maxHousingFromBackEnd=maxTotalDebt-debts;
+// Use the lesser of the two
+var maxMonthlyPI=Math.min(maxHousingPayment,maxHousingFromBackEnd);
+// Subtract estimated property tax (1.2%) and insurance (~$150/mo) from housing budget
+// We'll iterate: estimate home price, compute tax+ins, adjust
+var r=rate/12,n=term*12;
+if(maxMonthlyPI<=0){document.getElementById('res').classList.remove('visible');return}
+
+// Reverse mortgage formula: Loan = Payment * [(1+r)^n - 1] / [r * (1+r)^n]
+var factor;
+if(r===0){factor=n}else{factor=(Math.pow(1+r,n)-1)/(r*Math.pow(1+r,n))}
+
+// Iterative solve: maxMonthlyPI covers P&I + tax + insurance
+// tax = homePrice * 0.012 / 12, insurance = homePrice * 0.004 / 12
+// P&I = maxMonthlyPI - homePrice*0.016/12
+// loanAmount = homePrice - down
+// P&I = loanAmount / factor
+// homePrice - down = (maxMonthlyPI - homePrice*0.016/12) * factor
+// homePrice - down = maxMonthlyPI*factor - homePrice*0.016/12*factor
+// homePrice + homePrice*0.016/12*factor = maxMonthlyPI*factor + down
+// homePrice * (1 + 0.016/12*factor) = maxMonthlyPI*factor + down
+var taxInsRate=0.016/12;
+var homePrice=(maxMonthlyPI*factor+down)/(1+taxInsRate*factor);
+var loanAmount=homePrice-down;
+if(loanAmount<0){loanAmount=0;homePrice=down}
+
+var monthlyPI;
+if(r===0){monthlyPI=loanAmount/n}else{monthlyPI=loanAmount*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1)}
+var estTax=homePrice*0.012/12;
+var totalPayment=monthlyPI+estTax;
+var totalInterest=(monthlyPI*n)-loanAmount;
+var frontDTI=(totalPayment/monthlyIncome)*100;
+var backDTI=((totalPayment+debts)/monthlyIncome)*100;
+
+document.getElementById('rMax').textContent=fmt(homePrice);
+document.getElementById('rLoan').textContent=fmt(loanAmount);
+document.getElementById('rPayment').textContent=fmt(monthlyPI);
+document.getElementById('rFrontDTI').textContent=fmtPct(frontDTI);
+document.getElementById('rBackDTI').textContent=fmtPct(backDTI);
+document.getElementById('rInterest').textContent=fmt(totalInterest>0?totalInterest:0);
+document.getElementById('rTax').textContent=fmt(estTax);
+document.getElementById('res').classList.add('visible');
+}
+
+['income','debts','down','rate'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
+document.getElementById('term').addEventListener('change',calc);
+document.getElementById('income').focus();
+</script>
+</body>
+</html>

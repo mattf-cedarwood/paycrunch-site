@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Net Worth Calculator — Free Personal Net Worth Tracker | paycrunch.co</title>
+<meta name="description" content="Free net worth calculator. Add up your assets (cash, investments, real estate, vehicles) and subtract liabilities (mortgage, student loans, credit cards). See your total net worth with a visual breakdown.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://paycrunch.co/net-worth-calculator.html">
+<meta property="og:title" content="Net Worth Calculator — Free Personal Net Worth Tracker">
+<meta property="og:description" content="Free net worth calculator. Total your assets minus liabilities to see your net worth with a visual breakdown chart.">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Net Worth Calculator","description":"Calculate your personal net worth by totaling assets minus liabilities with visual breakdown","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a good net worth by age?","acceptedAnswer":{"@type":"Answer","text":"A common benchmark is to have 1x your annual salary saved by 30, 3x by 40, 6x by 50, and 8x by 60. The median net worth in the US is about $193,000 for ages 35-44, $340,000 for 45-54, and $580,000 for 55-64. Your target depends on your lifestyle and retirement goals."}},{"@type":"Question","name":"What counts as an asset?","acceptedAnswer":{"@type":"Answer","text":"Assets include anything of value you own: cash and savings accounts, investment accounts (401k, IRA, brokerage), real estate (your home's market value), vehicles, business equity, personal property (jewelry, art, collectibles), and any money owed to you."}},{"@type":"Question","name":"What counts as a liability?","acceptedAnswer":{"@type":"Answer","text":"Liabilities are debts you owe: mortgage balance, student loans, auto loans, credit card balances, personal loans, medical debt, home equity loans/lines of credit, and any other outstanding obligations."}},{"@type":"Question","name":"How often should I calculate my net worth?","acceptedAnswer":{"@type":"Answer","text":"Calculate your net worth quarterly or at minimum twice a year. Monthly tracking can cause anxiety from normal market fluctuations. The important thing is the long-term trend — your net worth should generally increase over time as you pay down debt and build savings."}},{"@type":"Question","name":"Is it normal to have a negative net worth?","acceptedAnswer":{"@type":"Answer","text":"Yes, especially in your 20s and 30s. Student loans, car loans, and a new mortgage can easily put you in negative territory. About 14% of American households have negative net worth. Focus on the trend — consistently paying down debt and building savings will turn it positive over time."}}]}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#f8f9fa;color:#1a1a2e;line-height:1.7}
+.container{max-width:800px;margin:0 auto;padding:0 20px}
+header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:40px 0 30px;text-align:center}
+header h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+header p{font-size:1.05rem;opacity:.85;max-width:600px;margin:0 auto}
+nav{background:#16213e;padding:10px 0;text-align:center;overflow-x:auto;white-space:nowrap}
+nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.82rem;padding:6px 12px;display:inline-block;border-radius:6px;transition:all .2s}
+nav a:hover,nav a.active{color:#fff;background:rgba(255,255,255,.1)}
+.ad-slot{background:#e9ecef;border:2px dashed #ced4da;padding:15px;text-align:center;margin:20px 0;border-radius:8px;color:#868e96;font-size:.8rem;min-height:90px;display:flex;align-items:center;justify-content:center}
+.card{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:32px;margin:20px 0}
+.card.hero{margin-top:-20px;position:relative;z-index:2}
+label{display:block;font-weight:600;margin-bottom:6px;font-size:.92rem;color:#495057}
+input[type="number"],select{width:100%;padding:12px 14px;border:2px solid #dee2e6;border-radius:10px;font-size:1.05rem;transition:border-color .2s,box-shadow .2s;background:#f8f9fa}
+input:focus,select:focus{outline:none;border-color:#0f3460;box-shadow:0 0 0 3px rgba(15,52,96,.1);background:#fff}
+.input-row{display:flex;gap:14px;flex-wrap:wrap}
+.input-row .input-group{flex:1;min-width:180px;margin-bottom:16px}
+.dollar-wrap{position:relative}
+.dollar-wrap::before{content:'$';position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.05rem;color:#868e96;font-weight:600}
+.dollar-wrap input{padding-left:28px}
+.section-label{font-size:.95rem;font-weight:700;color:#1a1a2e;margin:20px 0 10px;padding:10px 0;border-bottom:2px solid #f1f3f5;display:flex;justify-content:space-between;align-items:center}
+.section-label .section-total{font-size:1.1rem;color:#0f3460}
+.results{margin-top:20px;display:none}
+.results.visible{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.results-header{font-size:.9rem;font-weight:600;color:#868e96;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #f1f3f5}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result-item{background:#f8f9fa;border-radius:12px;padding:14px 18px;transition:background .2s}
+.result-item:hover{background:#e9ecef}
+.result-item.highlight{background:linear-gradient(135deg,#0f3460,#1a1a2e);color:#fff;grid-column:1/-1}
+.result-item.highlight.negative{background:linear-gradient(135deg,#c0392b,#e74c3c)}
+.result-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;opacity:.7;margin-bottom:3px}
+.result-value{font-size:1.4rem;font-weight:700}
+.result-item.highlight .result-value{font-size:1.9rem}
+.result-note{font-size:.78rem;opacity:.6;margin-top:3px}
+.chart-container{margin-top:16px;padding:16px;background:#f8f9fa;border-radius:12px}
+.chart-container h4{font-size:.85rem;color:#868e96;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.bar-row{display:flex;align-items:center;margin-bottom:8px}
+.bar-label{width:110px;font-size:.82rem;font-weight:600;color:#495057;flex-shrink:0}
+.bar-track{flex:1;height:24px;background:#e9ecef;border-radius:6px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:6px;transition:width .4s ease;display:flex;align-items:center;padding-left:8px;color:#fff;font-size:.72rem;font-weight:600;min-width:0}
+.bar-amt{margin-left:8px;font-size:.82rem;color:#495057;font-weight:600;white-space:nowrap}
+.asset-bar{background:linear-gradient(90deg,#0f3460,#1a6baa)}
+.liability-bar{background:linear-gradient(90deg,#c0392b,#e74c3c)}
+.content-section{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:32px;margin:24px 0}
+.content-section h2{font-size:1.35rem;margin-bottom:14px;color:#1a1a2e}
+.content-section h3{font-size:1.1rem;margin:18px 0 8px;color:#16213e}
+.content-section p{color:#495057;margin-bottom:12px}
+.faq-item{border-bottom:1px solid #f1f3f5;padding:14px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:1rem;margin-bottom:6px;color:#1a1a2e;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:1.3rem;color:#0f3460;transition:transform .2s}
+.faq-q.open::after{content:'\2212'}
+.faq-a{color:#495057;display:none;padding-top:4px}
+.faq-a.visible{display:block}
+footer{text-align:center;padding:28px 20px;color:#868e96;font-size:.82rem}
+footer a{color:#0f3460;text-decoration:none}
+@media(max-width:600px){header h1{font-size:1.4rem}.card{padding:18px}.result-grid{grid-template-columns:1fr}.result-item.highlight .result-value{font-size:1.5rem}.input-row{flex-direction:column;gap:0}.bar-label{width:80px;font-size:.75rem}}
+</style>
+</head>
+<body>
+<header><div class="container"><h1>Net Worth Calculator</h1><p>Total your assets, subtract your liabilities, and see your complete financial picture.</p></div></header>
+<nav><div class="container"><a href="index.html">Home</a><a href="hourly-to-salary-calculator.html">Hourly to Salary</a><a href="salary-to-hourly-calculator.html">Salary to Hourly</a><a href="tip-calculator.html">Tip Calculator</a><a href="percentage-calculator.html">Percentage Calc</a><a href="overtime-calculator.html">Overtime Pay</a><a href="compound-interest-calculator.html">Compound Interest</a><a href="take-home-pay-calculator.html">Take-Home Pay</a><a href="loan-payment-calculator.html">Loan Payment</a><a href="roi-calculator.html">ROI Calculator</a><a href="discount-calculator.html">Discount/Sale</a><a href="mortgage-affordability-calculator.html">Mortgage</a><a href="debt-payoff-calculator.html">Debt Payoff</a><a href="paycheck-calculator.html">Paycheck</a><a href="retirement-calculator.html">Retirement</a><a href="net-worth-calculator.html" class="active">Net Worth</a></div></nav>
+<div class="container">
+<div class="card hero">
+<div class="section-label">Assets (What You Own)<span class="section-total" id="assetTotal">$0</span></div>
+<div class="input-row">
+<div class="input-group"><label for="aCash">Cash & Savings</label><div class="dollar-wrap"><input type="number" id="aCash" placeholder="15000" min="0" step="500" inputmode="decimal" class="asset-input"></div></div>
+<div class="input-group"><label for="aChecking">Checking Accounts</label><div class="dollar-wrap"><input type="number" id="aChecking" placeholder="5000" min="0" step="100" inputmode="decimal" class="asset-input"></div></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label for="aInvest">Investments (401k, IRA, Brokerage)</label><div class="dollar-wrap"><input type="number" id="aInvest" placeholder="80000" min="0" step="1000" inputmode="decimal" class="asset-input"></div></div>
+<div class="input-group"><label for="aRealEstate">Real Estate (Market Value)</label><div class="dollar-wrap"><input type="number" id="aRealEstate" placeholder="350000" min="0" step="5000" inputmode="decimal" class="asset-input"></div></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label for="aVehicles">Vehicles</label><div class="dollar-wrap"><input type="number" id="aVehicles" placeholder="25000" min="0" step="500" inputmode="decimal" class="asset-input"></div></div>
+<div class="input-group"><label for="aOther">Other Assets</label><div class="dollar-wrap"><input type="number" id="aOther" placeholder="0" min="0" step="500" inputmode="decimal" class="asset-input"></div></div>
+</div>
+
+<div class="section-label">Liabilities (What You Owe)<span class="section-total" id="liabTotal">$0</span></div>
+<div class="input-row">
+<div class="input-group"><label for="lMortgage">Mortgage Balance</label><div class="dollar-wrap"><input type="number" id="lMortgage" placeholder="250000" min="0" step="1000" inputmode="decimal" class="liab-input"></div></div>
+<div class="input-group"><label for="lStudentLoans">Student Loans</label><div class="dollar-wrap"><input type="number" id="lStudentLoans" placeholder="35000" min="0" step="500" inputmode="decimal" class="liab-input"></div></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label for="lCreditCards">Credit Card Balances</label><div class="dollar-wrap"><input type="number" id="lCreditCards" placeholder="5000" min="0" step="100" inputmode="decimal" class="liab-input"></div></div>
+<div class="input-group"><label for="lAutoLoans">Auto Loans</label><div class="dollar-wrap"><input type="number" id="lAutoLoans" placeholder="15000" min="0" step="500" inputmode="decimal" class="liab-input"></div></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label for="lPersonal">Personal Loans</label><div class="dollar-wrap"><input type="number" id="lPersonal" placeholder="0" min="0" step="500" inputmode="decimal" class="liab-input"></div></div>
+<div class="input-group"><label for="lOther">Other Liabilities</label><div class="dollar-wrap"><input type="number" id="lOther" placeholder="0" min="0" step="500" inputmode="decimal" class="liab-input"></div></div>
+</div>
+
+<div class="results visible" id="res">
+<div class="results-header">Your Net Worth</div>
+<div class="result-grid">
+<div class="result-item highlight" id="nwHighlight"><div class="result-label">Net Worth</div><div class="result-value" id="rNetWorth">$0</div></div>
+<div class="result-item"><div class="result-label">Total Assets</div><div class="result-value" id="rAssets">$0</div></div>
+<div class="result-item"><div class="result-label">Total Liabilities</div><div class="result-value" id="rLiab">$0</div></div>
+<div class="result-item"><div class="result-label">Debt-to-Asset Ratio</div><div class="result-value" id="rRatio">0%</div></div>
+<div class="result-item"><div class="result-label">Liquid Assets</div><div class="result-value" id="rLiquid">$0</div></div>
+</div>
+<div class="chart-container" id="chartArea">
+<h4>Asset Breakdown</h4>
+</div>
+</div></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+<div class="content-section"><h2>Understanding Your Net Worth</h2>
+<p>Net worth is the single best measure of your financial health. It is simply: <strong>Assets - Liabilities = Net Worth</strong>. Track it over time to see if you are building wealth or accumulating debt.</p>
+<h3>Why Net Worth Matters More Than Income</h3>
+<p>High income does not guarantee wealth. Someone earning $200,000 with $300,000 in debt and no savings has a lower net worth than someone earning $60,000 with $150,000 saved and no debt. What you keep matters more than what you earn.</p>
+<h3>How to Increase Your Net Worth</h3>
+<p>There are only two ways: increase assets or decrease liabilities. Pay down high-interest debt first. Build an emergency fund. Max out retirement contributions. Avoid depreciating assets (new cars, luxury items). Invest consistently, even small amounts.</p></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+<div class="content-section"><h2>Frequently Asked Questions</h2>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is a good net worth by age?</div><div class="faq-a">A common benchmark is to have 1x your annual salary saved by 30, 3x by 40, 6x by 50, and 8x by 60. The median net worth in the US is about $193,000 for ages 35-44, $340,000 for 45-54, and $580,000 for 55-64. Your target depends on your lifestyle and retirement goals.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What counts as an asset?</div><div class="faq-a">Assets include anything of value you own: cash and savings accounts, investment accounts (401k, IRA, brokerage), real estate (your home's market value), vehicles, business equity, personal property (jewelry, art, collectibles), and any money owed to you.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What counts as a liability?</div><div class="faq-a">Liabilities are debts you owe: mortgage balance, student loans, auto loans, credit card balances, personal loans, medical debt, home equity loans/lines of credit, and any other outstanding obligations.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How often should I calculate my net worth?</div><div class="faq-a">Calculate your net worth quarterly or at minimum twice a year. Monthly tracking can cause anxiety from normal market fluctuations. The important thing is the long-term trend — your net worth should generally increase over time as you pay down debt and build savings.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is it normal to have a negative net worth?</div><div class="faq-a">Yes, especially in your 20s and 30s. Student loans, car loans, and a new mortgage can easily put you in negative territory. About 14% of American households have negative net worth. Focus on the trend — consistently paying down debt and building savings will turn it positive over time.</div></div></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+</div>
+<footer><div class="container">
+<p>&copy; 2026 paycrunch.co. All calculations are estimates. Consult a financial professional for personalized advice.</p>
+<p style="margin-top:6px"><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Use</a></p>
+</div></footer>
+<script>
+function fmt(n){return (n<0?'-$':'$')+Math.abs(Math.round(n)).toLocaleString()}
+function toggleFaq(el){var a=el.nextElementSibling,o=el.classList.contains('open');
+document.querySelectorAll('.faq-q').forEach(function(q){q.classList.remove('open')});
+document.querySelectorAll('.faq-a').forEach(function(a){a.classList.remove('visible')});
+if(!o){el.classList.add('open');a.classList.add('visible')}}
+
+function calc(){
+var cash=parseFloat(document.getElementById('aCash').value)||0;
+var checking=parseFloat(document.getElementById('aChecking').value)||0;
+var invest=parseFloat(document.getElementById('aInvest').value)||0;
+var realEstate=parseFloat(document.getElementById('aRealEstate').value)||0;
+var vehicles=parseFloat(document.getElementById('aVehicles').value)||0;
+var aOther=parseFloat(document.getElementById('aOther').value)||0;
+
+var mortgage=parseFloat(document.getElementById('lMortgage').value)||0;
+var studentLoans=parseFloat(document.getElementById('lStudentLoans').value)||0;
+var creditCards=parseFloat(document.getElementById('lCreditCards').value)||0;
+var autoLoans=parseFloat(document.getElementById('lAutoLoans').value)||0;
+var personal=parseFloat(document.getElementById('lPersonal').value)||0;
+var lOther=parseFloat(document.getElementById('lOther').value)||0;
+
+var totalAssets=cash+checking+invest+realEstate+vehicles+aOther;
+var totalLiab=mortgage+studentLoans+creditCards+autoLoans+personal+lOther;
+var netWorth=totalAssets-totalLiab;
+var liquidAssets=cash+checking+invest;
+var ratio=totalAssets>0?(totalLiab/totalAssets*100):0;
+
+document.getElementById('assetTotal').textContent=fmt(totalAssets);
+document.getElementById('liabTotal').textContent=fmt(totalLiab);
+document.getElementById('rNetWorth').textContent=fmt(netWorth);
+document.getElementById('rAssets').textContent=fmt(totalAssets);
+document.getElementById('rLiab').textContent=fmt(totalLiab);
+document.getElementById('rRatio').textContent=ratio.toFixed(1)+'%';
+document.getElementById('rLiquid').textContent=fmt(liquidAssets);
+
+var highlight=document.getElementById('nwHighlight');
+if(netWorth<0){highlight.classList.add('negative')}else{highlight.classList.remove('negative')}
+
+// Build chart
+var chart=document.getElementById('chartArea');
+var items=[];
+if(cash+checking>0)items.push({label:'Cash',value:cash+checking,type:'asset'});
+if(invest>0)items.push({label:'Investments',value:invest,type:'asset'});
+if(realEstate>0)items.push({label:'Real Estate',value:realEstate,type:'asset'});
+if(vehicles>0)items.push({label:'Vehicles',value:vehicles,type:'asset'});
+if(aOther>0)items.push({label:'Other Assets',value:aOther,type:'asset'});
+if(mortgage>0)items.push({label:'Mortgage',value:mortgage,type:'liability'});
+if(studentLoans>0)items.push({label:'Student Loans',value:studentLoans,type:'liability'});
+if(creditCards>0)items.push({label:'Credit Cards',value:creditCards,type:'liability'});
+if(autoLoans>0)items.push({label:'Auto Loans',value:autoLoans,type:'liability'});
+if(personal+lOther>0)items.push({label:'Other Debt',value:personal+lOther,type:'liability'});
+
+var maxVal=Math.max.apply(null,items.map(function(i){return i.value}));
+if(maxVal<=0)maxVal=1;
+
+var html='<h4>Breakdown</h4>';
+items.forEach(function(item){
+var pct=Math.max(3,(item.value/maxVal*100));
+var barClass=item.type==='asset'?'asset-bar':'liability-bar';
+html+='<div class="bar-row"><span class="bar-label">'+item.label+'</span><div class="bar-track"><div class="bar-fill '+barClass+'" style="width:'+pct+'%"></div></div><span class="bar-amt">'+fmt(item.value)+'</span></div>';
+});
+chart.innerHTML=html;
+
+document.getElementById('res').classList.add('visible');
+}
+
+document.querySelectorAll('.asset-input, .liab-input').forEach(function(inp){
+inp.addEventListener('input',calc);
+});
+calc();
+</script>
+</body>
+</html>

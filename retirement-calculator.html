@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Retirement Calculator — How Much Do I Need to Retire? | paycrunch.co</title>
+<meta name="description" content="Free retirement calculator. Estimate how much you need to save for retirement based on your age, savings, contributions, and expected returns. See projected monthly income in retirement.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://paycrunch.co/retirement-calculator.html">
+<meta property="og:title" content="Retirement Calculator — How Much Do I Need to Retire?">
+<meta property="og:description" content="Free retirement calculator. Estimate retirement savings and monthly income based on your age, savings, contributions, and expected returns.">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Retirement Calculator","description":"Calculate projected retirement savings and monthly income based on current age, savings, contributions, and expected returns","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much do I need to retire?","acceptedAnswer":{"@type":"Answer","text":"A common guideline is 25x your annual expenses (the 4% rule). If you spend $50,000/year, aim for $1,250,000. This amount, invested in a balanced portfolio, should sustain 30+ years of retirement with a 4% annual withdrawal rate."}},{"@type":"Question","name":"What is the 4% rule?","acceptedAnswer":{"@type":"Answer","text":"The 4% rule suggests you can withdraw 4% of your retirement savings in year one, then adjust for inflation each year, and your money should last 30 years. On a $1 million portfolio, that's $40,000/year or $3,333/month. Some advisors now recommend 3.5% for added safety."}},{"@type":"Question","name":"How much should I save for retirement each month?","acceptedAnswer":{"@type":"Answer","text":"Financial advisors recommend saving 15-20% of gross income for retirement. Starting at 25 and saving $500/month at 7% returns builds roughly $1.2 million by 65. Starting at 35 requires $1,000/month to reach the same goal. The earlier you start, the less you need to save."}},{"@type":"Question","name":"What rate of return should I expect?","acceptedAnswer":{"@type":"Answer","text":"Historically, a balanced stock/bond portfolio returns 6-8% annually after inflation. The S&P 500 alone has averaged about 10% (7% after inflation). Use 6-7% for conservative estimates. Your actual returns depend on asset allocation and market conditions."}},{"@type":"Question","name":"Will Social Security be enough for retirement?","acceptedAnswer":{"@type":"Answer","text":"The average Social Security benefit is about $1,900/month (2024). Maximum benefit at full retirement age is around $3,822/month. Social Security typically replaces 30-40% of pre-retirement income, so most people need additional savings to maintain their lifestyle."}}]}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#f8f9fa;color:#1a1a2e;line-height:1.7}
+.container{max-width:800px;margin:0 auto;padding:0 20px}
+header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:40px 0 30px;text-align:center}
+header h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+header p{font-size:1.05rem;opacity:.85;max-width:600px;margin:0 auto}
+nav{background:#16213e;padding:10px 0;text-align:center;overflow-x:auto;white-space:nowrap}
+nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.82rem;padding:6px 12px;display:inline-block;border-radius:6px;transition:all .2s}
+nav a:hover,nav a.active{color:#fff;background:rgba(255,255,255,.1)}
+.ad-slot{background:#e9ecef;border:2px dashed #ced4da;padding:15px;text-align:center;margin:20px 0;border-radius:8px;color:#868e96;font-size:.8rem;min-height:90px;display:flex;align-items:center;justify-content:center}
+.card{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:32px;margin:20px 0}
+.card.hero{margin-top:-20px;position:relative;z-index:2}
+label{display:block;font-weight:600;margin-bottom:6px;font-size:.92rem;color:#495057}
+input[type="number"],select{width:100%;padding:12px 14px;border:2px solid #dee2e6;border-radius:10px;font-size:1.05rem;transition:border-color .2s,box-shadow .2s;background:#f8f9fa}
+input:focus,select:focus{outline:none;border-color:#0f3460;box-shadow:0 0 0 3px rgba(15,52,96,.1);background:#fff}
+.input-row{display:flex;gap:14px;flex-wrap:wrap}
+.input-row .input-group{flex:1;min-width:180px;margin-bottom:16px}
+.dollar-wrap{position:relative}
+.dollar-wrap::before{content:'$';position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.05rem;color:#868e96;font-weight:600}
+.dollar-wrap input{padding-left:28px}
+.pct-wrap{position:relative}
+.pct-wrap::after{content:'%';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.05rem;color:#868e96;font-weight:600}
+.pct-wrap input{padding-right:28px}
+.results{margin-top:20px;display:none}
+.results.visible{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.results-header{font-size:.9rem;font-weight:600;color:#868e96;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #f1f3f5}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result-item{background:#f8f9fa;border-radius:12px;padding:14px 18px;transition:background .2s}
+.result-item:hover{background:#e9ecef}
+.result-item.highlight{background:linear-gradient(135deg,#0f3460,#1a1a2e);color:#fff;grid-column:1/-1}
+.result-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;opacity:.7;margin-bottom:3px}
+.result-value{font-size:1.4rem;font-weight:700}
+.result-item.highlight .result-value{font-size:1.9rem}
+.result-note{font-size:.78rem;opacity:.6;margin-top:3px}
+.milestone-bar{margin-top:16px;padding:16px;background:#f8f9fa;border-radius:12px}
+.milestone-bar h4{font-size:.85rem;color:#868e96;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.milestone{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #e9ecef;font-size:.9rem}
+.milestone:last-child{border-bottom:none}
+.milestone .age{font-weight:600;color:#1a1a2e}
+.milestone .amt{font-weight:700;color:#0f3460}
+.content-section{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);padding:32px;margin:24px 0}
+.content-section h2{font-size:1.35rem;margin-bottom:14px;color:#1a1a2e}
+.content-section h3{font-size:1.1rem;margin:18px 0 8px;color:#16213e}
+.content-section p{color:#495057;margin-bottom:12px}
+.faq-item{border-bottom:1px solid #f1f3f5;padding:14px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;font-size:1rem;margin-bottom:6px;color:#1a1a2e;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:1.3rem;color:#0f3460;transition:transform .2s}
+.faq-q.open::after{content:'\2212'}
+.faq-a{color:#495057;display:none;padding-top:4px}
+.faq-a.visible{display:block}
+footer{text-align:center;padding:28px 20px;color:#868e96;font-size:.82rem}
+footer a{color:#0f3460;text-decoration:none}
+@media(max-width:600px){header h1{font-size:1.4rem}.card{padding:18px}.result-grid{grid-template-columns:1fr}.result-item.highlight .result-value{font-size:1.5rem}.input-row{flex-direction:column;gap:0}}
+</style>
+</head>
+<body>
+<header><div class="container"><h1>Retirement Calculator</h1><p>How much will you have at retirement? Plan your future with projected savings and income estimates.</p></div></header>
+<nav><div class="container"><a href="index.html">Home</a><a href="hourly-to-salary-calculator.html">Hourly to Salary</a><a href="salary-to-hourly-calculator.html">Salary to Hourly</a><a href="tip-calculator.html">Tip Calculator</a><a href="percentage-calculator.html">Percentage Calc</a><a href="overtime-calculator.html">Overtime Pay</a><a href="compound-interest-calculator.html">Compound Interest</a><a href="take-home-pay-calculator.html">Take-Home Pay</a><a href="loan-payment-calculator.html">Loan Payment</a><a href="roi-calculator.html">ROI Calculator</a><a href="discount-calculator.html">Discount/Sale</a><a href="mortgage-affordability-calculator.html">Mortgage</a><a href="debt-payoff-calculator.html">Debt Payoff</a><a href="paycheck-calculator.html">Paycheck</a><a href="retirement-calculator.html" class="active">Retirement</a><a href="net-worth-calculator.html">Net Worth</a></div></nav>
+<div class="container">
+<div class="card hero">
+<div class="input-row">
+<div class="input-group"><label for="currentAge">Current Age</label><input type="number" id="currentAge" value="30" min="18" max="80"></div>
+<div class="input-group"><label for="retireAge">Retirement Age</label><input type="number" id="retireAge" value="65" min="30" max="90"></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label for="savings">Current Savings</label><div class="dollar-wrap"><input type="number" id="savings" placeholder="50000" min="0" step="1000" inputmode="decimal"></div></div>
+<div class="input-group"><label for="monthly">Monthly Contribution</label><div class="dollar-wrap"><input type="number" id="monthly" value="500" min="0" step="50" inputmode="decimal"></div></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label for="returnRate">Expected Annual Return</label><div class="pct-wrap"><input type="number" id="returnRate" value="7" min="0" max="20" step="0.5" inputmode="decimal"></div></div>
+<div class="input-group"><label for="inflation">Inflation Rate</label><div class="pct-wrap"><input type="number" id="inflation" value="3" min="0" max="10" step="0.5" inputmode="decimal"></div></div>
+</div>
+<div class="results" id="res">
+<div class="results-header">Retirement Projection</div>
+<div class="result-grid">
+<div class="result-item highlight"><div class="result-label">Savings at Retirement</div><div class="result-value" id="rTotal">$0</div><div class="result-note">Nominal value at age <span id="rRetAge">65</span></div></div>
+<div class="result-item"><div class="result-label">In Today's Dollars</div><div class="result-value" id="rReal">$0</div></div>
+<div class="result-item"><div class="result-label">Monthly Income (4% Rule)</div><div class="result-value" id="rIncome">$0</div></div>
+<div class="result-item"><div class="result-label">Total Contributed</div><div class="result-value" id="rContrib">$0</div></div>
+<div class="result-item"><div class="result-label">Investment Growth</div><div class="result-value" id="rGrowth">$0</div></div>
+<div class="result-item"><div class="result-label">Growth Multiple</div><div class="result-value" id="rMultiple">0x</div></div>
+<div class="result-item"><div class="result-label">Years to Save</div><div class="result-value" id="rYears">0</div></div>
+</div>
+<div class="milestone-bar" id="milestones">
+<h4>Savings Milestones</h4>
+</div>
+</div></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+<div class="content-section"><h2>Planning Your Retirement</h2>
+<p>Retirement planning comes down to three factors: <strong>how much you save</strong>, <strong>how long you invest</strong>, and <strong>what returns you earn</strong>. Starting early is the single most powerful thing you can do, thanks to compound growth.</p>
+<h3>The 4% Rule</h3>
+<p>The 4% rule is a widely-used retirement guideline: withdraw 4% of your portfolio in year one, then adjust for inflation each year. Historically, this has sustained portfolios for 30+ years. On $1 million saved, you can withdraw $40,000/year ($3,333/month).</p>
+<h3>How Much Do You Need?</h3>
+<p>Multiply your desired annual retirement income by 25. Want $60,000/year? You need $1.5 million. Want $100,000/year? Target $2.5 million. This assumes a 4% withdrawal rate and a balanced investment portfolio.</p>
+<h3>The Impact of Starting Early</h3>
+<p>Starting at 25 with $500/month at 7% returns: $1.2 million by 65. Starting at 35: $567,000. Starting at 45: $244,000. The first 10 years produce more wealth than the last 20 — that is the power of compound growth.</p></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+<div class="content-section"><h2>Frequently Asked Questions</h2>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How much do I need to retire?</div><div class="faq-a">A common guideline is 25x your annual expenses (the 4% rule). If you spend $50,000/year, aim for $1,250,000. This amount, invested in a balanced portfolio, should sustain 30+ years of retirement with a 4% annual withdrawal rate.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the 4% rule?</div><div class="faq-a">The 4% rule suggests you can withdraw 4% of your retirement savings in year one, then adjust for inflation each year, and your money should last 30 years. On a $1 million portfolio, that's $40,000/year or $3,333/month. Some advisors now recommend 3.5% for added safety.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How much should I save for retirement each month?</div><div class="faq-a">Financial advisors recommend saving 15-20% of gross income for retirement. Starting at 25 and saving $500/month at 7% returns builds roughly $1.2 million by 65. Starting at 35 requires $1,000/month to reach the same goal. The earlier you start, the less you need to save.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What rate of return should I expect?</div><div class="faq-a">Historically, a balanced stock/bond portfolio returns 6-8% annually after inflation. The S&P 500 alone has averaged about 10% (7% after inflation). Use 6-7% for conservative estimates. Your actual returns depend on asset allocation and market conditions.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will Social Security be enough for retirement?</div><div class="faq-a">The average Social Security benefit is about $1,900/month (2024). Maximum benefit at full retirement age is around $3,822/month. Social Security typically replaces 30-40% of pre-retirement income, so most people need additional savings to maintain their lifestyle.</div></div></div>
+<div class="ad-slot">Ad Space — Insert Google AdSense code here</div>
+</div>
+<footer><div class="container">
+<p>&copy; 2026 paycrunch.co. All calculations are estimates. Consult a financial professional for personalized advice.</p>
+<p style="margin-top:6px"><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Use</a></p>
+</div></footer>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString()}
+function toggleFaq(el){var a=el.nextElementSibling,o=el.classList.contains('open');
+document.querySelectorAll('.faq-q').forEach(function(q){q.classList.remove('open')});
+document.querySelectorAll('.faq-a').forEach(function(a){a.classList.remove('visible')});
+if(!o){el.classList.add('open');a.classList.add('visible')}}
+
+function calc(){
+var currentAge=parseInt(document.getElementById('currentAge').value)||30;
+var retireAge=parseInt(document.getElementById('retireAge').value)||65;
+var savings=parseFloat(document.getElementById('savings').value)||0;
+var monthly=parseFloat(document.getElementById('monthly').value)||0;
+var returnRate=parseFloat(document.getElementById('returnRate').value)/100;
+var inflation=parseFloat(document.getElementById('inflation').value)/100;
+
+if(retireAge<=currentAge){document.getElementById('res').classList.remove('visible');return}
+if(savings<=0&&monthly<=0){document.getElementById('res').classList.remove('visible');return}
+
+var years=retireAge-currentAge;
+var monthlyRate=returnRate/12;
+var months=years*12;
+
+// Calculate future value with monthly contributions
+var fvSavings=savings*Math.pow(1+monthlyRate,months);
+var fvContrib=monthly*((Math.pow(1+monthlyRate,months)-1)/monthlyRate);
+var totalFV=fvSavings+fvContrib;
+var totalContributed=savings+(monthly*months);
+var growth=totalFV-totalContributed;
+
+// Real value (adjusted for inflation)
+var realValue=totalFV/Math.pow(1+inflation,years);
+
+// Monthly income using 4% rule
+var annualIncome=totalFV*0.04;
+var monthlyIncome=annualIncome/12;
+
+document.getElementById('rTotal').textContent=fmt(totalFV);
+document.getElementById('rRetAge').textContent=retireAge;
+document.getElementById('rReal').textContent=fmt(realValue);
+document.getElementById('rIncome').textContent=fmt(monthlyIncome);
+document.getElementById('rContrib').textContent=fmt(totalContributed);
+document.getElementById('rGrowth').textContent=fmt(growth);
+document.getElementById('rMultiple').textContent=(totalContributed>0?(totalFV/totalContributed).toFixed(1)+'x':'-');
+document.getElementById('rYears').textContent=years;
+
+// Milestones
+var milestoneDiv=document.getElementById('milestones');
+milestoneDiv.innerHTML='<h4>Savings Milestones</h4>';
+var milestoneAges=[currentAge+5,currentAge+10,currentAge+15,currentAge+20,currentAge+25,currentAge+30,retireAge];
+var seen={};
+milestoneAges.forEach(function(age){
+if(age>retireAge||age<=currentAge||seen[age])return;
+seen[age]=true;
+var yrs=age-currentAge;
+var m=yrs*12;
+var fv=savings*Math.pow(1+monthlyRate,m)+monthly*((Math.pow(1+monthlyRate,m)-1)/monthlyRate);
+var div=document.createElement('div');
+div.className='milestone';
+div.innerHTML='<span class="age">Age '+age+'</span><span class="amt">'+fmt(fv)+'</span>';
+milestoneDiv.appendChild(div);
+});
+
+document.getElementById('res').classList.add('visible');
+}
+
+['currentAge','retireAge','savings','monthly','returnRate','inflation'].forEach(function(id){
+document.getElementById(id).addEventListener('input',calc);
+});
+</script>
+</body>
+</html>
